@@ -1,0 +1,13 @@
+
+/Fitness.API/bin
+/Fitness.API/obj
+/Fitness.Application/bin
+/Fitness.Application/obj
+/Fitness.Domain/bin
+/Fitness.Domain/obj
+/Fitness.Infra.Data/bin
+/Fitness.Infra.Data/obj
+/Fitness.Infra.Ioc/bin
+/Fitness.Infra.Ioc/obj
+/Fitness.WebUI/bin
+/Fitness.WebUI/obj
