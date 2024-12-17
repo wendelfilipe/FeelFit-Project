@@ -1,4 +1,5 @@
-﻿using Fitness.Domain.Interfaces;
+﻿using Fitness.Application.Mappings;
+using Fitness.Domain.Interfaces;
 using Fitness.Infra.Data.Context;
 using Fitness.Infra.Data.Identity;
 using Fitness.Infra.Data.Repositories;
@@ -31,6 +32,7 @@ namespace Fitness.Infra.Ioc
 
             services.AddScoped<IExerciciosRepository, ExerciciosRepository>();
             services.AddScoped<IFichaRepository, FichaRepository>();
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
 

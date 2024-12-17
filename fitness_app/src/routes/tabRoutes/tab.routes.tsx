@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React, { useState } from 'react'
 import Home from '../../pages/Home';
 import { Feather } from '@expo/vector-icons';
-import Status from '../../pages/Status';
 import InitialPage from '../../pages/InitialPage';
 import { RootStackParamList } from '../../typescript/RootStackParamList';
 

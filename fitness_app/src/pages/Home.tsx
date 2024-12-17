@@ -1,9 +1,9 @@
 import { getCurrentPositionAsync, requestForegroundPermissionsAsync, LocationObject, watchPositionAsync, LocationAccuracy, LocationSubscription } from 'expo-location'
 import React, { useEffect, useRef, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import MapView, { Marker, Polyline, UrlTile } from 'react-native-maps';
 import styles from '../styles/home';
 import {getDistance } from 'geolib';
+import MapView, { Marker, Polyline, UrlTile } from 'react-native-maps';
 
 interface HomeProps {
   onDistanceChange: (distance: number) => void;
@@ -36,46 +36,52 @@ const Home: React.FC<HomeProps> = ({ onDistanceChange }) => {
   }, []);
 
   useEffect(() => {
-    let subscription: LocationSubscription;
-    const startWachingLocation = async () => {
-      watchPositionAsync({
+  let subscription: LocationSubscription | null = null;
+
+  const startWatchingLocation = async () => {
+    subscription = await watchPositionAsync(
+      {
         accuracy: LocationAccuracy.Highest,
         timeInterval: 1000,
-        distanceInterval: 1
-      }, (response) => {
+        distanceInterval: 1,
+      },
+      (response) => {
+        setLocation(response);
 
-      setLocation(response);
+        if (routeCoordinates.length > 0) {
+          const lastCoordinate = routeCoordinates[routeCoordinates.length - 1];
+          const distance = getDistance(
+            { latitude: lastCoordinate.latitude, longitude: lastCoordinate.longitude },
+            { latitude: response.coords.latitude, longitude: response.coords.longitude }
+          );
 
-      if(routeCoordinates.length > 0) {
-        const lastCoordinate = routeCoordinates[routeCoordinates.length -1 ];
-        const distance = getDistance(
-          {latitude: lastCoordinate.latitude, longitude: lastCoordinate.longitude},
-          {latitude: response.coords.latitude, longitude: response.coords.longitude}
-        );
-        const newTotalDistance = totalDistance + distance
-        setTotalDistance(newTotalDistance);
-        onDistanceChange(newTotalDistance);
-      }
-
-      setRouteCoordinates((prevCoordinates) => [
-        ...prevCoordinates, 
-        {
-          latitude: response.coords.latitude, 
-          longitude: response.coords.longitude
+          const newTotalDistance = totalDistance + distance;
+          setTotalDistance(newTotalDistance);
+          onDistanceChange(newTotalDistance);
         }
-      ]);
 
-      mapRef.current?.animateCamera({
-        center: response.coords
-      })
-    });
+        setRouteCoordinates((prevCoordinates) => [
+          ...prevCoordinates,
+          {
+            latitude: response.coords.latitude,
+            longitude: response.coords.longitude,
+          },
+        ]);
+
+        mapRef.current?.animateCamera({
+          center: response.coords,
+        });
+      }
+    );
   };
-  startWachingLocation();
 
-    return () => {
-      subscription?.remove();
-    };
-  },[routeCoordinates, totalDistance]);
+  startWatchingLocation();
+
+  // Limpar o subscription ao desmontar o componente
+  return () => {
+    subscription?.remove(); // Remoção segura
+  };
+}, [routeCoordinates, totalDistance]);
 
   return (
    <View style={styles.container}>
@@ -93,11 +99,10 @@ const Home: React.FC<HomeProps> = ({ onDistanceChange }) => {
             }}
           >
             <UrlTile
-              urlTemplate="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              urlTemplate="http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg"
               maximumZ={19}
-              flipY={false}
             />
-            <Marker 
+            <Marker
               coordinate={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude
