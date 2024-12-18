@@ -9,7 +9,7 @@ interface HomeProps {
   onDistanceChange: (distance: number) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onDistanceChange }) => {
+const Maps: React.FC<HomeProps> = ({ onDistanceChange }) => {
   const [location, setLocation] = useState<LocationObject | null>(null);
   const [routeCoordinates, setRouteCoordinates] = useState<{ latitude: number, longitude: number }[]>([]);
   const [totalDistance, setTotalDistance ] = useState<number>(0)
@@ -98,10 +98,6 @@ const Home: React.FC<HomeProps> = ({ onDistanceChange }) => {
               longitudeDelta: 0.005
             }}
           >
-            <UrlTile
-              urlTemplate="http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg"
-              maximumZ={19}
-            />
             <Marker
               coordinate={{
                 latitude: location.coords.latitude,
@@ -129,4 +125,4 @@ const Home: React.FC<HomeProps> = ({ onDistanceChange }) => {
   )
 }
 
-export default Home;
+export default Maps;

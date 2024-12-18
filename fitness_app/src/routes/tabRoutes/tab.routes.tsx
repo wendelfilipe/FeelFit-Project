@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React, { useState } from 'react'
-import Home from '../../pages/Home';
 import { Feather } from '@expo/vector-icons';
 import InitialPage from '../../pages/InitialPage';
 import { RootStackParamList } from '../../typescript/RootStackParamList';
+import Maps from '../../pages/Maps';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -37,7 +37,7 @@ const TabRoutes: React.FC = () => {
         />
         <Tab.Screen
             name='Map'
-            children={() => <Home onDistanceChange={handleDistanceChange}/>}
+            children={() => <Maps onDistanceChange={handleDistanceChange}/>}
             options={{
                 tabBarIcon: ({color, size}) => <Feather name='map' color={color} size={size} />,
                 tabBarLabel: 'Mapa',
