@@ -2,36 +2,65 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Fitness.Application.DTOs;
+using Fitness.Application.Exercicio.Queries;
+using Fitness.Application.Fichas.Command;
+using Fitness.Application.Fichas.Query;
 using Fitness.Application.Interfaces;
+using MediatR;
 
 namespace Fitness.Application.Services
 {
     public class FichaService : IFichaService
     {
-        public Task CreateAsync(FichaDTO fichaDTO)
+        private readonly IMediator mediator;
+        private readonly IMapper mapper;
+        public async Task CreateAsync(FichaDTO fichaDTO)
         {
-            throw new NotImplementedException();
+            var fichaCreateCommand = mapper.Map<FichaCreateCommand>(fichaDTO);
+            if(fichaCreateCommand == null)
+                throw new Exception("ficha is null in service");
+
+            await mediator.Send(fichaCreateCommand);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var fichaDeleteCommand = new FichaDeleteCommand(id);
+            if(fichaDeleteCommand == null)
+                throw new Exception("ficha is null in service");
+
+            await mediator.Send(fichaDeleteCommand);
         }
 
-        public Task<IEnumerable<FichaDTO>> GetAllFichasAsync()
+        public async Task<IEnumerable<FichaDTO>> GetAllFichasAsync()
         {
-            throw new NotImplementedException();
+            var getAllExerciciosQuery = new GetAllExerciciosQuery();
+            if(getAllExerciciosQuery == null)
+                throw new Exception("ficha is null in service");
+            
+            var result = await mediator.Send(getAllExerciciosQuery);
+            return mapper.Map<IEnumerable<FichaDTO>>(result);
         }
 
-        public Task<FichaDTO> GetFichaByIdAsync(int id)
+        public async Task<FichaDTO> GetFichaByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var getFichaByIdQuery = new GetFichaByIdQuery(id);
+            if(getFichaByIdQuery == null)
+                throw new Exception("ficha is null in service");
+
+            var result = await mediator.Send(getFichaByIdQuery);
+            return mapper.Map<FichaDTO>(result);
         }
 
-        public Task UpdateAsync(FichaDTO fichaDTO)
+        public async Task UpdateAsync(FichaDTO fichaDTO)
         {
-            throw new NotImplementedException();
+            var fichaUpdateCommand = mapper.Map<FichaUpdateCommand>(fichaDTO);
+            if(fichaUpdateCommand == null)
+                throw new Exception("ficha is null in service");
+
+            await mediator.Send(fichaUpdateCommand);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Fitness.API.Controllers
         }
 
         [HttpGet("GetExerciciosById/{id}")]
-        public async Task<IActionResult> GetExercicios([FromBody] int id)
+        public async Task<IActionResult> GetExercicios(int id)
         {
             try 
             {
@@ -71,6 +71,20 @@ namespace Fitness.API.Controllers
                 return Ok("Create exercice sucessfully");
             }
             catch (Exception ex)
+            {
+                return Ok(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteExercicio/{id}")]
+        public async Task<IActionResult> DeleteExercicio(int id)
+        {
+            try 
+            {
+                await exerciciosService.DeleteAsync(id);
+                return Ok("Delete exercice sucessfully");
+            }
+            catch( Exception ex)
             {
                 return Ok(ex.Message);
             }
