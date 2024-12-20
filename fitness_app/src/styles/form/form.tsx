@@ -2,47 +2,25 @@
 import { StyleSheet } from "react-native";
 
 const form = StyleSheet.create({
-    container:{
+    imageBackground:{
         display: 'flex',
-        flexDirection: 'column',
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
+        marginLeft: -5
+    },
+    button:{
         backgroundColor: 'white',
-        justifyContent: 'center'
+        paddingLeft: 100,
+        paddingRight:100,
+        paddingTop: 15,
+        paddingBottom: 15,
+        borderRadius: 15
     },
-    form: {
-        width: '80%',
-        backgroundColor: 'white',
-        padding: 20,
-        borderRadius: 10,
-        elevation: 15,
-        shadowColor: '#8B0000'
-    },
-    formInput:{
-        borderWidth: 2,
-        borderRadius: 10,
-        margin: 3
-    },
-    formText: {
-        margin: 3,
-    },
-    buttonContainer:{
-        flexDirection: 'row',
-        justifyContent: 'center'
-    },
-    formButton: {
-        backgroundColor: '#FF3b1f',
-        width: 100,
-        height: 35,
-        borderRadius: 10,
-        margin: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
+    textButton: {
+        fontWeight: 'bold'
     }
+
 })
 
 export default form;

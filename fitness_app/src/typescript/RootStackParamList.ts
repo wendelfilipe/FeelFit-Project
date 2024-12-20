@@ -5,4 +5,5 @@ export type RootStackParamList = {
     FitnessApp: {distance: number}
     Map: undefined
     Status: undefined
+    InitialPage: undefined
 }

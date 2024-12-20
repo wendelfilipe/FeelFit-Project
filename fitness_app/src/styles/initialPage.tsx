@@ -4,65 +4,45 @@ const styles = StyleSheet.create({
     containerAll:{
         flex: 1
     },
-    container:{
-        flex:1,
-        backgroundColor: 'white',
+    containerCard:{
+        width: '90%',
+        height: '35%',
+        backgroundColor: '#ff6961',
         borderRadius: 15,
-        margin: 5,
-        borderWidth: 3,
-        borderColor: 'red',
+        marginBottom: 0,
+        marginTop: 30,
+        margin: 'auto',
         elevation: 25,
         shadowColor: '#ff0000',
-        padding: 10
+        padding: 10,
+        justifyContent: 'center'
     },
-    info: {
-        flexDirection: 'row',
-        height: '100%'
+    containerText:{
+        marginLeft: 15
     },
-    containerImg: {
-        height: '98%',
-        width: '18%',
-        backgroundColor: 'white',
-        borderRadius: 15,
-        borderColor: 'red',
-        borderWidth: 2,
-        elevation: 15,
-        shadowColor: 'red'
-    },
-    containerProps: {
-        margin: 5,
-        alignSelf: 'center'
-    },
-    text: {
-        fontSize: 16,
-        fontWeight: 'bold'
-    },
-    statusContainer: {
-        backgroundColor: 'white',
-        flex: 5,
-        margin: 5,
-        borderRadius: 15,
-        borderWidth: 3,
-        borderColor: 'red',
-        elevation: 25,
-        shadowColor: '#ff0000',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    backButton:{
-        margin: 25,
-        backgroundColor: '#FF0000',
-        width: 100,
-        height: 35,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 10,
-        elevation: 25,
-        shadowColor: '#ff0000'
-    },
-    backButtonText:{
+    textDate: {
+        fontSize: 12,
         color: 'white',
+        marginBottom: -5
+    },
+    textKcal: {
+        fontSize: 25,
         fontWeight: 'bold',
+        marginBottom: 5,
+        color: 'white'
+    },
+    buttonCard: {
+        padding: 5,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        width: 100,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    buttonCardText: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: '#ff6961'
     }
 
 })

@@ -11,23 +11,16 @@ const StackRoutes: React.FC = () => {
   return (
     <Stack.Navigator initialRouteName='Login'
       screenOptions={{
-        headerStyle:{
-          backgroundColor: 'white',
-          ...(Platform.OS === 'ios' && {
-            shadowColor: '#ff000',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-          })
-        },
-        headerShadowVisible: true
+        headerShadowVisible: false,
       }}
     >
         <Stack.Screen
-          name='Login'
+          name='InitialPage'
           component={Login}
           options={{
-            headerTitleAlign: 'center'
+            headerShown: false,
+            headerTitleAlign: 'center',
+            title: 'Fitness App',
           }}
         />
         <Stack.Screen
