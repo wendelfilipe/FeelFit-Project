@@ -43,6 +43,12 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 'bold',
         color: '#ff6961'
+    },
+    dayContainer:{
+        flexDirection: 'row'
+    },
+    textDay: {
+        
     }
 
 })
