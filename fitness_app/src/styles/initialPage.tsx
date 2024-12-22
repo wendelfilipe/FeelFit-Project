@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         color: '#ff6961'
     },
     dayContainer:{
-        flexDirection: 'row'
+        flexDirection: 'column'
     },
     textDay: {
         
