@@ -45,10 +45,21 @@ const styles = StyleSheet.create({
         color: '#ff6961'
     },
     dayContainer:{
-        flexDirection: 'column'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textCardCurrentDate: {
+        color: 'white',        
     },
     textDay: {
-        
+        margin: 7
+    },
+    textCurrenteDateDay:{
+        backgroundColor: '#ff6961',
+        width: 100,
+        padding: 5,
+        borderRadius: 10
     }
 
 })
