@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     containerAll:{
-        flex: 1
+        flex: 1,
+        backgroundColor: '#fff',
     },
     containerCard:{
         width: '90%',
@@ -60,6 +61,41 @@ const styles = StyleSheet.create({
         width: 100,
         padding: 5,
         borderRadius: 10
+    },
+    kcalContainer: {
+        margin: 20,
+        alignItems: 'center'
+    },
+    textKcalMiddle: {
+        marginBottom: 5,
+        fontWeight: 'bold',
+        fontSize: 25
+    },
+    textTotalCalories: {
+        color: 'grey',
+        fontWeight: 'bold',
+        opacity: .8
+    },
+    dataContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingRight: 25,
+        paddingLeft: 25 
+    },
+    distanceContainer: {
+    },
+    stepsContainer: {
+    },
+    pointContainer: {
+    },
+    distanceNumber:{
+        fontWeight: 'bold',
+        marginBottom: 3
+    },
+    distanceText: {
+        color: 'grey',
+        opacity: .5,
+        fontWeight: 'bold'
     }
 
 })

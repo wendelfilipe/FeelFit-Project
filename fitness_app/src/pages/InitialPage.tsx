@@ -4,6 +4,7 @@ import styles from '../styles/initialPage';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../typescript/RootStackParamList';
 import { format } from 'date-fns';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type InitialPageProps = NativeStackScreenProps<RootStackParamList, 'FitnessApp'>;
 
@@ -15,6 +16,7 @@ type InitialPageState = {
   date4: string | null;
   date5: string | null;
   date6: string | null;
+  kcal: string | null;
 };
 
 class InitialPage extends Component<InitialPageProps, InitialPageState> {
@@ -28,6 +30,7 @@ class InitialPage extends Component<InitialPageProps, InitialPageState> {
       date4: null,
       date5: null,
       date6: null,
+      kcal: null
     };
   }
 
@@ -67,6 +70,7 @@ class InitialPage extends Component<InitialPageProps, InitialPageState> {
       date4: formatedDate4,  
       date5: formatedDate5,
       date6: formatedDate6,
+      kcal: "1 883 Kcal"
     });
   }
 
@@ -83,45 +87,66 @@ class InitialPage extends Component<InitialPageProps, InitialPageState> {
       date4,
       date5,
       date6,
+      kcal
     } = this.state;
 
     return (
-      <View style={styles.containerAll}>
-        <View style={styles.containerCard}>
-          <View style={styles.containerText}>
-            <Text style={styles.textCardCurrentDate}>
-              {currentDate || 'Loading date...'}
-            </Text>
-            <Text style={styles.textKcal}>1 883 Kcal</Text>
-            <TouchableOpacity style={styles.buttonCard}>
-              <Text style={styles.buttonCardText}>Track your activity</Text>
-            </TouchableOpacity>
+        <View style={styles.containerAll}>
+          <View style={styles.containerCard}>
+            <View style={styles.containerText}>
+              <Text style={styles.textCardCurrentDate}>
+                {currentDate || 'Loading date...'}
+              </Text>
+              <Text style={styles.textKcal}>{kcal}</Text>
+              <TouchableOpacity style={styles.buttonCard}>
+                <Text style={styles.buttonCardText}>Track your activity</Text>
+              </TouchableOpacity>
+            </View>
           </View>
+          <ScrollView>
+            <View style={styles.dayContainer}>
+              <TouchableOpacity>
+                <Text style={styles.textDay}>{date1 ?? 'Loading date...'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textDay}>{date2 ?? 'Loading date...'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textDay}>{date3 ?? 'Loading date...'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textCurrenteDateDay}>{currentDate ?? 'Loading date...'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textDay}>{date4 ?? 'Loading date...'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textDay}>{date5 ?? 'Loading date...'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textDay}>{date6 ?? 'Loading date...'}</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.kcalContainer}>
+              <Text style={styles.textKcalMiddle}>{kcal}</Text>
+              <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
+            </View>
+            <View style={styles.dataContainer}>
+              <View style={styles.distanceContainer}>
+                <Text style={styles.distanceNumber}>7580 m</Text>
+                <Text style={styles.distanceText}>Distance</Text>
+              </View>
+              <View style={styles.stepsContainer}>
+                <Text style={styles.distanceNumber}>9832</Text>
+                <Text style={styles.distanceText}>Steps</Text>
+              </View>
+              <View style={styles.pointContainer}>
+                <Text style={styles.distanceNumber}>1248</Text>
+                <Text style={styles.distanceText}>Points</Text>
+              </View>
+            </View>
+          </ScrollView>
         </View>
-        <View style={styles.dayContainer}>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date1 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date2 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date3 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textCurrenteDateDay}>{currentDate ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date4 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date5 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date6 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
     );
   }
 }
