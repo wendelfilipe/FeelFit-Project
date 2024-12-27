@@ -34,6 +34,9 @@ namespace Fitness.Infra.Ioc
             services.AddScoped<IFichaRepository, FichaRepository>();
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
+            var myHandlers = AppDomain.CurrentDomain.Load("Fitness.Application");
+            services.AddMediatR(mr => mr.RegisterServicesFromAssemblies(myHandlers));
+
             return services;
 
         }

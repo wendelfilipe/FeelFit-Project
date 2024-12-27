@@ -43,6 +43,9 @@ namespace Fitness.Infra.Ioc
             services.AddScoped<IFichaService, FichaService>();
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
+            var MyHadlers = AppDomain.CurrentDomain.Load("Fitness.Application");
+            services.AddMediatR(mr => mr.RegisterServicesFromAssemblies(MyHadlers));
+
             return services;
         }
     }

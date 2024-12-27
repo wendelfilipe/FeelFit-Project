@@ -29,7 +29,7 @@ namespace Fitness.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-           var result = await authenticate.Authenticate(loginViewModel.Email, loginViewModel.Password);
+           var result = await authenticate.Authenticate(loginViewModel.Email ?? "", loginViewModel.Password ?? "");
            if(result)
            {
                 if(string.IsNullOrEmpty(loginViewModel.ReturnUrl))
