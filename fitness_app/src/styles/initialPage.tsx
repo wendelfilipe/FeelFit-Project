@@ -4,14 +4,15 @@ const styles = StyleSheet.create({
     containerAll:{
         flex: 1,
         backgroundColor: '#fff',
+        alignItems: 'center'
     },
     containerCard:{
-        width: '90%',
-        height: '35%',
+        width: 320,
+        height: 150,
         backgroundColor: '#ff6961',
         borderRadius: 15,
         marginBottom: 0,
-        marginTop: 30,
+        marginTop: 5,
         margin: 'auto',
         elevation: 25,
         shadowColor: '#ff0000',
@@ -40,6 +41,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    textCardCurrentDate: {
+        color: 'white',        
+    },
     buttonCardText: {
         fontSize: 10,
         fontWeight: 'bold',
@@ -50,17 +54,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    textCardCurrentDate: {
-        color: 'white',        
-    },
     textDay: {
         margin: 7
     },
     textCurrenteDateDay:{
         backgroundColor: '#ff6961',
-        width: 100,
+        width: 110,
         padding: 5,
-        borderRadius: 10
+        borderRadius: 15,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13
     },
     kcalContainer: {
         margin: 20,
@@ -80,7 +84,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingRight: 25,
-        paddingLeft: 25 
+        paddingLeft: 25,
+        marginBottom: 10
     },
     distanceContainer: {
     },
@@ -96,6 +101,66 @@ const styles = StyleSheet.create({
         color: 'grey',
         opacity: .5,
         fontWeight: 'bold'
+    },
+    barContainer:{
+        height: 100,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginBottom: 10
+    },
+    bar:{
+        backgroundColor: '#dcdcdc',
+        height: 100,
+        width: 15,
+        borderRadius: 8,
+        justifyContent: 'flex-end'
+    },
+    progressBlack: {
+        backgroundColor: 'black',
+        borderRadius: 8
+    },
+    progressRed: {
+        backgroundColor: '#ff6961',
+        borderRadius: 8
+    },
+    containerBottom: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    containerDumbbell: {
+        width: 80,
+        height: 70,
+        backgroundColor: '#ff6961',
+        justifyContent: 'center',
+        padding: 10,
+        borderRadius: 15
+    },
+    containerTreadmill: {
+        width: 80,
+        height: 70,
+        backgroundColor: '#ff6961',
+        justifyContent: 'center',
+        padding: 10,
+        borderRadius: 15
+    },
+    containerRope:{
+        width: 80,
+        height: 70,
+        backgroundColor: '#ff6961',
+        justifyContent: 'center',
+        padding: 10,
+        borderRadius: 15
+    },
+    iconBottom: {
+        color: 'white',
+        marginBottom: 5
+    },
+    textKcalBottom: {
+        color:'white'
+    },
+    textBottom: {
+        fontSize: 12,
+        color: 'white'
     }
 
 })
