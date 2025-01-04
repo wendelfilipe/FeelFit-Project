@@ -6,4 +6,5 @@ export type RootStackParamList = {
     Map: undefined
     Status: undefined
     InitialPage: undefined
+    HeartRate: undefined
 }

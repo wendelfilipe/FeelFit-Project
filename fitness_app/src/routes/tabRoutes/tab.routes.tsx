@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import InitialPage from '../../pages/InitialPage';
 import { RootStackParamList } from '../../typescript/RootStackParamList';
 import Maps from '../../pages/Maps';
+import HeartRate from 'src/pages/heartRate';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -45,6 +46,18 @@ const TabRoutes: React.FC = () => {
                 headerShown: false
             }}
         />
+        <Tab.Screen
+            name='HeartRate'
+            component= {HeartRate}
+            options={{
+                tabBarIcon: ({color, size}) => <Feather name='heart' color={color} size={size} />,
+                tabBarLabel: 'Heart Rate',
+                title: 'Heart Rate',
+                headerShown: false
+            }}
+        >
+
+        </Tab.Screen>
     </Tab.Navigator>
   )
 }
