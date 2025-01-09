@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import InitialPage from '../../pages/InitialPage';
 import { RootStackParamList } from '../../typescript/RootStackParamList';
 import Maps from '../../pages/Maps';
-import HeartRate from 'src/pages/heartRate';
+import HeartRate from 'src/pages/HeartRate';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
