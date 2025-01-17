@@ -5,6 +5,7 @@ import InitialPage from '../../pages/InitialPage';
 import { RootStackParamList } from '../../typescript/RootStackParamList';
 import Maps from '../../pages/Maps';
 import HeartRate from 'src/pages/HeartRate';
+import ActivityProfile from 'src/pages/ActivityProfile';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -55,9 +56,16 @@ const TabRoutes: React.FC = () => {
                 title: 'Heart Rate',
                 headerShown: false
             }}
-        >
-
-        </Tab.Screen>
+        />
+        <Tab.Screen
+            name='ActivityProfile'
+            component= {ActivityProfile}
+            options={{
+                tabBarIcon: ({color, size}) => <Feather name='user' color={color} size={size} />,
+                tabBarLabel: 'Profile',
+                headerShown: false
+            }}
+        />
     </Tab.Navigator>
   )
 }

@@ -7,4 +7,5 @@ export type RootStackParamList = {
     Status: undefined
     InitialPage: undefined
     HeartRate: undefined
+    ActivityProfile: undefined
 }
