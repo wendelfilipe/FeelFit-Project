@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, ScrollView  } from 'react-native';
 import styles from '../styles/initialPage';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../typescript/RootStackParamList';
 import { format } from 'date-fns';
-import { ScrollView } from 'react-native-gesture-handler';
 import { FontAwesome5 } from '@expo/vector-icons';
 import BorderSquare from 'src/components/BorderSquare';
 import BarHorizontal from 'src/components/BarHorizontal';
+import ButtonDay from 'src/components/ButtonDay';
 
 type InitialPageProps = NativeStackScreenProps<RootStackParamList, 'FitnessApp'>;
 
@@ -34,6 +34,8 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   const [treadmill, setTreadmill] = useState<boolean>(false);
   const [rope, setRope] = useState<boolean>(false);
   const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
+  const [dayOfWeek, setDayOfWeek] = useState<Date[]>()
+ 
 
   useEffect(() => {
     const currentDate = new Date();
@@ -70,7 +72,19 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     setDate4(formatedDate4);
     setDate5(formatedDate5);
     setDate6(formatedDate6);
+
+    setDayOfWeek([ 
+      formatedCurrentDate, 
+      formatedDate1,
+      formatedDate2,
+      formatedDate3,
+      formatedDate4,
+      formatedDate5,
+      formatedDate6]);
+    
   }, []);
+
+  
 
   const clickBack = () => {
     navigation.push('InitialPage');
@@ -94,9 +108,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     setRope(true);
   };
 
-  const isClickOnDate = (date: Date) => {
-    const formatedDate = 'Today, ' + format(date, 'dd-MMM');
-    setDate(formatedDate);
+  const isClickOnDate = () => {
     setIsClickedDate(true);
   };
 
@@ -121,8 +133,11 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView>
-        <View style={styles.dayContainer}>
+      <FlatList
+        data={dayOfWeek}
+        renderItem={({item}) => <ButtonDay onPress={isClickOnDate} date={item}/>}
+      >
+      <View style={styles.dayContainer}>
           <TouchableOpacity>
             <Text style={styles.textDay}>{date1 ?? 'Loading date...'}</Text>
           </TouchableOpacity>
@@ -153,6 +168,8 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
           <Text style={styles.textKcalMiddle}>{kcal}</Text>
           <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
         </View>
+      </FlatList>
+      <ScrollView>
         <View style={styles.dataContainer}>
           <View style={styles.distanceContainer}>
             <Text style={styles.distanceNumber}>7580 m</Text>
