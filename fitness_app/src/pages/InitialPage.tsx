@@ -11,6 +11,8 @@ import ButtonDay from 'src/components/ButtonDay';
 
 type InitialPageProps = NativeStackScreenProps<RootStackParamList, 'FitnessApp'>;
 
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
+
 const InitialPage = ({ navigation }: InitialPageProps) => {
   const [currentDate, setCurrentDate] = useState<string | null>(null);
   const [dateParams, setDateParams] = useState<Date>(new Date());
@@ -34,12 +36,12 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   const [treadmill, setTreadmill] = useState<boolean>(false);
   const [rope, setRope] = useState<boolean>(false);
   const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
-  const [dayOfWeek, setDayOfWeek] = useState<Date[]>()
+  const [dayOfWeek, setDayOfWeek] = useState<string[]>([])
  
 
   useEffect(() => {
     const currentDate = new Date();
-    const formatedCurrentDate = 'Today, ' + format(currentDate, 'dd-MMM');
+    const formatedCurrentDate = 'Today, ' + format(currentDate, 'dd MMM');
 
     const previousDate1 = new Date(currentDate);
     previousDate1.setDate(currentDate.getDate() - 3);
@@ -73,19 +75,48 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     setDate5(formatedDate5);
     setDate6(formatedDate6);
 
-    setDayOfWeek([ 
-      formatedCurrentDate, 
+    setDayOfWeek([  
       formatedDate1,
       formatedDate2,
       formatedDate3,
+      formatedCurrentDate,
       formatedDate4,
       formatedDate5,
-      formatedDate6]);
+      formatedDate6
+    ]);
     
   }, []);
 
+  const reorganizeDates = (
+    clickedDate: Date
+  ): void => {
+    const baseDate = new Date(clickedDate);
+    const newDates: string[] = [];
   
-
+    // Adiciona os 3 dias anteriores
+    for (let i = 3; i > 0; i--) {
+      const prevDate = new Date(baseDate);
+      prevDate.setDate(baseDate.getDate() - i);
+      newDates.push(format(prevDate, 'dd'));
+    }
+  
+    // Adiciona a data clicada no meio
+    newDates.push('Today, ' + format(baseDate, 'dd MMM'));
+  
+    // Adiciona os 3 dias posteriores
+    for (let i = 1; i <= 3; i++) {
+      const nextDate = new Date(baseDate);
+      nextDate.setDate(baseDate.getDate() + i);
+      newDates.push(format(nextDate, 'dd'));
+    }
+  
+    // Atualiza o estado
+    setDayOfWeek([...newDates]); 
+  };
+   const handleDateClick = (date: Date) => {
+    const parsedDate = new Date(date);
+    reorganizeDates(parsedDate);
+   }
   const clickBack = () => {
     navigation.push('InitialPage');
   };
@@ -134,36 +165,11 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
         </View>
       </View>
       <FlatList
+        horizontal={true}
         data={dayOfWeek}
-        renderItem={({item}) => <ButtonDay onPress={isClickOnDate} date={item}/>}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item}) => <ButtonDay onPress={() => handleDateClick(new Date())} date={item}/>}
       >
-      <View style={styles.dayContainer}>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date1 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date2 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => isClickOnDate(dateParams)}>
-            <Text style={styles.textDay}>
-              {isClickedDate === true ? date : date1 ?? 'Loading date...'}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={isClickedDate === true ? styles.textDay : styles.textCurrenteDateDay}>
-              {currentDate ?? 'Loading date...'}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date4 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date5 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date6 ?? 'Loading date...'}</Text>
-          </TouchableOpacity>
-        </View>
         <View style={styles.kcalContainer}>
           <Text style={styles.textKcalMiddle}>{kcal}</Text>
           <Text style={styles.textTotalCalories}>Total Kilocalories</Text>

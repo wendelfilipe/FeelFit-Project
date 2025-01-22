@@ -1,9 +1,9 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 interface ButtonProps {
-    onPress: (date: Date) => void;
-    date: Date;
+    onPress: (date: string) => void;
+    date: string;
 }
 
 const ButtonDay: React.FC<ButtonProps> = ({onPress, date}) => {
@@ -11,9 +11,18 @@ const ButtonDay: React.FC<ButtonProps> = ({onPress, date}) => {
         <TouchableOpacity
             onPress={() => onPress(date)}
         >
-            <Text>{date.toDateString()}</Text>
+            <Text style={styles.container}>{date}</Text>
         </TouchableOpacity>
     )
 }
 
 export default ButtonDay;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#ff6961",
+        margin: 5,
+        padding: 5
+    }
+})
