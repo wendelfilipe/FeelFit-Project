@@ -36,7 +36,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   const [treadmill, setTreadmill] = useState<boolean>(false);
   const [rope, setRope] = useState<boolean>(false);
   const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
-  const [dayOfWeek, setDayOfWeek] = useState<string[]>([])
+  const [dayOfWeek, setDayOfWeek] = useState<Date[]>([])
  
 
   useEffect(() => {
@@ -76,13 +76,13 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     setDate6(formatedDate6);
 
     setDayOfWeek([  
-      formatedDate1,
-      formatedDate2,
-      formatedDate3,
-      formatedCurrentDate,
-      formatedDate4,
-      formatedDate5,
-      formatedDate6
+      previousDate1,
+      previousDate2,
+      previousDate3,
+      currentDate,
+      previousDate4,
+      previousDate5,
+      previousDate6
     ]);
     
   }, []);
@@ -91,27 +91,27 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     clickedDate: Date
   ): void => {
     const baseDate = new Date(clickedDate);
-    const newDates: string[] = [];
-  
+    const newDates: Date[] = [];
+
     // Adiciona os 3 dias anteriores
     for (let i = 3; i > 0; i--) {
       const prevDate = new Date(baseDate);
       prevDate.setDate(baseDate.getDate() - i);
-      newDates.push(format(prevDate, 'dd'));
+      newDates.push(prevDate);
     }
   
     // Adiciona a data clicada no meio
-    newDates.push('Today, ' + format(baseDate, 'dd MMM'));
+    newDates.push(baseDate);
   
     // Adiciona os 3 dias posteriores
     for (let i = 1; i <= 3; i++) {
       const nextDate = new Date(baseDate);
       nextDate.setDate(baseDate.getDate() + i);
-      newDates.push(format(nextDate, 'dd'));
+      newDates.push(nextDate);
     }
   
     // Atualiza o estado
-    setDayOfWeek([...newDates]); 
+    setDayOfWeek(newDates);
   };
    const handleDateClick = (date: Date) => {
     const parsedDate = new Date(date);
@@ -167,8 +167,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
       <FlatList
         horizontal={true}
         data={dayOfWeek}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => <ButtonDay onPress={() => handleDateClick(new Date())} date={item}/>}
+        renderItem={({item}) => <ButtonDay onPress={() => handleDateClick(item)} date={item}/>}
       >
         <View style={styles.kcalContainer}>
           <Text style={styles.textKcalMiddle}>{kcal}</Text>
