@@ -8,19 +8,20 @@ interface ButtonProps {
 }
 
 const ButtonDay: React.FC<ButtonProps> = ({days, onPress}) => {
+  if(days )
+
   
   return (
     <View style={styles.container}>
-      {days.map((day, index) => (
+      
         <TouchableOpacity
-          key={index}
-          style={[styles.day, index === 3 && styles.todayButton]}
+          style={styles}
           onPress={onPress}
         >
           <Text style={styles.dayText}>
           </Text>
         </TouchableOpacity>
-      ))}
+
     </View>
   );
 };

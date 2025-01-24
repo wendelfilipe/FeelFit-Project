@@ -37,7 +37,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   const [rope, setRope] = useState<boolean>(false);
   const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
   const [dayOfWeek, setDayOfWeek] = useState<Date[]>([])
-  const [days, setDays] = useState<Date[]>()
+  const [days, setDays] = useState<Date[]>([])
  
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     
   }, []);
   
-  const handleDayPress = (day: Date) => {
+  const handleDayPress = () => {
     const [selectedDay, setSelectedDay] = useState<Date>(new Date());
       
     const selectDay1 = new Date(selectedDay);
@@ -111,8 +111,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     selectDay6.setDate(selectDay6.getDate() + 3);
   
     const days = [selectDay1, selectDay2, selectDay3, selectedDay, selectDay4, selectDay5, selectDay6];
-    setSelectedDay(day);
-    set
+    setDays(days)
   }
    
   const clickBack = () => {
@@ -162,16 +161,11 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
           </TouchableOpacity>
         </View>
       </View>
-      <FlatList
-        horizontal={true}
-        data={dayOfWeek}
-        renderItem={({item}) => <ButtonDay onPress={() => reorganizeDates(item)} date={item}/>}
-      >
+        <ButtonDay onPress={() => handleDayPress()} days={days}/>
         <View style={styles.kcalContainer}>
           <Text style={styles.textKcalMiddle}>{kcal}</Text>
           <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
         </View>
-      </FlatList>
       <ScrollView>
         <View style={styles.dataContainer}>
           <View style={styles.distanceContainer}>
