@@ -37,9 +37,11 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   const [rope, setRope] = useState<boolean>(false);
   const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
   const [dayOfWeek, setDayOfWeek] = useState<Date[]>([])
+  const [days, setDays] = useState<Date[]>()
  
 
   useEffect(() => {
+    
     const currentDate = new Date();
     const formatedCurrentDate = 'Today, ' + format(currentDate, 'dd MMM');
 
@@ -86,37 +88,33 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     ]);
     
   }, []);
-
-  const reorganizeDates = (
-    clickedDate: Date
-  ): void => {
-    const baseDate = new Date(clickedDate);
-    const newDates: Date[] = [];
-
-    // Adiciona os 3 dias anteriores
-    for (let i = 3; i > 0; i--) {
-      const prevDate = new Date(baseDate);
-      prevDate.setDate(baseDate.getDate() - i);
-      newDates.push(prevDate);
-    }
   
-    // Adiciona a data clicada no meio
-    newDates.push(baseDate);
+  const handleDayPress = (day: Date) => {
+    const [selectedDay, setSelectedDay] = useState<Date>(new Date());
+      
+    const selectDay1 = new Date(selectedDay);
+    selectDay1.setDate(selectDay1.getDate() - 3);
   
-    // Adiciona os 3 dias posteriores
-    for (let i = 1; i <= 3; i++) {
-      const nextDate = new Date(baseDate);
-      nextDate.setDate(baseDate.getDate() + i);
-      newDates.push(nextDate);
-    }
+    const selectDay2 = new Date(selectedDay);
+    selectDay2.setDate(selectDay2.getDate() - 2);
   
-    // Atualiza o estado
-    setDayOfWeek(newDates);
-  };
-   const handleDateClick = (date: Date) => {
-    const parsedDate = new Date(date);
-    reorganizeDates(parsedDate);
-   }
+    const selectDay3 = new Date(selectedDay);
+    selectDay3.setDate(selectDay3.getDate() - 1);
+  
+    const selectDay4 = new Date(selectedDay);
+    selectDay4.setDate(selectDay4.getDate() + 1);
+  
+    const selectDay5 = new Date(selectedDay);
+    selectDay5.setDate(selectDay5.getDate() + 2);
+  
+    const selectDay6 = new Date(selectedDay);
+    selectDay6.setDate(selectDay6.getDate() + 3);
+  
+    const days = [selectDay1, selectDay2, selectDay3, selectedDay, selectDay4, selectDay5, selectDay6];
+    setSelectedDay(day);
+    set
+  }
+   
   const clickBack = () => {
     navigation.push('InitialPage');
   };
@@ -167,7 +165,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
       <FlatList
         horizontal={true}
         data={dayOfWeek}
-        renderItem={({item}) => <ButtonDay onPress={() => handleDateClick(item)} date={item}/>}
+        renderItem={({item}) => <ButtonDay onPress={() => reorganizeDates(item)} date={item}/>}
       >
         <View style={styles.kcalContainer}>
           <Text style={styles.textKcalMiddle}>{kcal}</Text>

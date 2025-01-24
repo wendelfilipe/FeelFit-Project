@@ -1,46 +1,50 @@
-import { format } from "date-fns";
-import React, { useState } from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { getDate, setDate } from 'date-fns';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
 
 interface ButtonProps {
-    onPress: (date: Date) => void;
-    date: Date;
+    days: Date[];
+    onPress: (event: GestureResponderEvent) => void | undefined;
 }
 
-const ButtonDay: React.FC<ButtonProps> = ({onPress, date}) => {
-    const dateFormated = (() => {
-        const dateToday = format(new Date, 'dd')
-        const dateFormat = format(date, 'dd');
-        if(dateFormat === dateToday)
-            return ('Today, ' + format(date, 'dd MMM')) 
-        else
-            return format(date, 'dd')
-    }); 
-    const [newDates, steNewDate] = useState<string>(dateFormated) 
-
-    return (
+const ButtonDay: React.FC<ButtonProps> = ({days, onPress}) => {
+  
+  return (
+    <View style={styles.container}>
+      {days.map((day, index) => (
         <TouchableOpacity
-            onPress={() => onPress(date)}
+          key={index}
+          style={[styles.day, index === 3 && styles.todayButton]}
+          onPress={onPress}
         >
-            <Text style={newDates.includes('Today') ? styles.container : styles.textButton}>{newDates}</Text>
+          <Text style={styles.dayText}>
+          </Text>
         </TouchableOpacity>
-    )
-}
-
-export default ButtonDay;
+      ))}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#ff6961",
-        margin: 8,
-        padding: 5,
-        borderRadius: 10,
-        color: 'white',
-        fontWeight: 'bold'
-    },
-    textButton : {
-        margin: 5,
-        padding: 5
-    }
-})
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    padding: 10,
+  },
+  day: {
+    backgroundColor: '#fff',
+    padding: 10,
+    borderRadius: 5,
+  },
+  todayButton: {
+    backgroundColor: '#ff6666',
+  },
+  dayText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+});
+
+export default ButtonDay;
