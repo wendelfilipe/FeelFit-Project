@@ -161,7 +161,9 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
           </TouchableOpacity>
         </View>
       </View>
-        <ButtonDay onPress={() => handleDayPress()} days={days}/>
+        <View style={styles.botaoTeste}>
+          <ButtonDay onPress={handleDayPress} days={days}/>
+        </View>
         <View style={styles.kcalContainer}>
           <Text style={styles.textKcalMiddle}>{kcal}</Text>
           <Text style={styles.textTotalCalories}>Total Kilocalories</Text>

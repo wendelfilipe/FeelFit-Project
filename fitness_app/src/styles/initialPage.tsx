@@ -161,6 +161,10 @@ const styles = StyleSheet.create({
     textBottom: {
         fontSize: 12,
         color: 'white'
+    }, 
+    botaoTeste: {
+        backgroundColor: 'grey'
+        
     }
 
 })

@@ -1,6 +1,6 @@
-import { getDate, setDate } from 'date-fns';
+import { format, getDate, setDate } from 'date-fns';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, GestureResponderEvent, FlatList } from 'react-native';
 
 interface ButtonProps {
     days: Date[];
@@ -8,20 +8,23 @@ interface ButtonProps {
 }
 
 const ButtonDay: React.FC<ButtonProps> = ({days, onPress}) => {
-  if(days )
+  const [isCurrentDate, setIsCurrentDate] = useState<Boolean>(false);
+  const currentDay = format(new Date(), "dd");
+  
+  days.some((d) => {
+    if(format(d, "dd") === currentDay) {
+      setIsCurrentDate(true)
+      return true;
+    }
+  })
 
   
   return (
     <View style={styles.container}>
-      
-        <TouchableOpacity
-          style={styles}
-          onPress={onPress}
-        >
-          <Text style={styles.dayText}>
-          </Text>
-        </TouchableOpacity>
-
+      <FlatList
+        data={days}
+        renderItem={({item}) => <TouchableOpacity style={isCurrentDate ? styles.todayButton : styles.day} onPress={onPress}>{item.toDateString()}</TouchableOpacity>}
+      ></FlatList>
     </View>
   );
 };
