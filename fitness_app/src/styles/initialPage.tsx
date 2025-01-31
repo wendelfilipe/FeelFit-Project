@@ -52,15 +52,15 @@ const styles = StyleSheet.create({
     dayContainer:{
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: 5
     },
     textDay: {
         margin: 7
     },
     textCurrenteDateDay:{
         backgroundColor: '#ff6961',
-        width: 110,
-        padding: 5,
+        padding: 6,
         borderRadius: 15,
         textAlign: 'center',
         fontWeight: 'bold',

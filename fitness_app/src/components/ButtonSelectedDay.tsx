@@ -3,28 +3,20 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, GestureResponderEvent, FlatList } from 'react-native';
 
 interface ButtonProps {
-    days: Date[];
+    day: string | null;
     onPress: (event: GestureResponderEvent) => void | undefined;
 }
 
-const ButtonDay: React.FC<ButtonProps> = ({days, onPress}) => {
-  const [isCurrentDate, setIsCurrentDate] = useState<Boolean>(false);
-  const currentDay = format(new Date(), "dd");
-  
-  days.some((d) => {
-    if(format(d, "dd") === currentDay) {
-      setIsCurrentDate(true)
-      return true;
-    }
-  })
+const ButtonSelectedDay: React.FC<ButtonProps> = ({day, onPress}) => {
 
-  
   return (
     <View style={styles.container}>
-      <FlatList
-        data={days}
-        renderItem={({item}) => <TouchableOpacity style={isCurrentDate ? styles.todayButton : styles.day} onPress={onPress}>{item.toDateString()}</TouchableOpacity>}
-      ></FlatList>
+      <TouchableOpacity
+        onPress={onPress}
+      >
+        <Text>{day}</Text>
+      </TouchableOpacity>
+  
     </View>
   );
 };
@@ -51,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ButtonDay;
+export default ButtonSelectedDay;

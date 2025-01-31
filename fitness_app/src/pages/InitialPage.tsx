@@ -7,7 +7,10 @@ import { format } from 'date-fns';
 import { FontAwesome5 } from '@expo/vector-icons';
 import BorderSquare from 'src/components/BorderSquare';
 import BarHorizontal from 'src/components/BarHorizontal';
-import ButtonDay from 'src/components/ButtonDay';
+import ButtonDay from 'src/components/ButtonSelectedDay';
+import ButtonCurrentDay from 'src/components/ButtonSelectedDay';
+import ButtonSelectedDay from 'src/components/ButtonSelectedDay';
+import useEquipmentSelection from 'src/hook/useEquipmentSelection';
 
 type InitialPageProps = NativeStackScreenProps<RootStackParamList, 'FitnessApp'>;
 
@@ -15,8 +18,6 @@ type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 const InitialPage = ({ navigation }: InitialPageProps) => {
   const [currentDate, setCurrentDate] = useState<string | null>(null);
-  const [dateParams, setDateParams] = useState<Date>(new Date());
-  const [date, setDate] = useState<string>('');
   const [date1, setDate1] = useState<string | null>(null);
   const [date2, setDate2] = useState<string | null>(null);
   const [date3, setDate3] = useState<string | null>(null);
@@ -32,13 +33,11 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   const [valueSatur, setValueSatur] = useState<number>(3000);
   const [valueSun, setValueSun] = useState<number>(1500);
   const [total, setTotal] = useState<number>(3500);
-  const [dumbbell, setDumbbell] = useState<boolean>(true);
-  const [treadmill, setTreadmill] = useState<boolean>(false);
-  const [rope, setRope] = useState<boolean>(false);
+  
   const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
-  const [dayOfWeek, setDayOfWeek] = useState<Date[]>([])
-  const [days, setDays] = useState<Date[]>([])
- 
+  
+  //hook
+  const [dumbbell, treadmill, rope, selectEquipment] = useEquipmentSelection();
 
   useEffect(() => {
     
@@ -76,65 +75,14 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     setDate4(formatedDate4);
     setDate5(formatedDate5);
     setDate6(formatedDate6);
-
-    setDayOfWeek([  
-      previousDate1,
-      previousDate2,
-      previousDate3,
-      currentDate,
-      previousDate4,
-      previousDate5,
-      previousDate6
-    ]);
     
   }, []);
-  
-  const handleDayPress = () => {
-    const [selectedDay, setSelectedDay] = useState<Date>(new Date());
-      
-    const selectDay1 = new Date(selectedDay);
-    selectDay1.setDate(selectDay1.getDate() - 3);
-  
-    const selectDay2 = new Date(selectedDay);
-    selectDay2.setDate(selectDay2.getDate() - 2);
-  
-    const selectDay3 = new Date(selectedDay);
-    selectDay3.setDate(selectDay3.getDate() - 1);
-  
-    const selectDay4 = new Date(selectedDay);
-    selectDay4.setDate(selectDay4.getDate() + 1);
-  
-    const selectDay5 = new Date(selectedDay);
-    selectDay5.setDate(selectDay5.getDate() + 2);
-  
-    const selectDay6 = new Date(selectedDay);
-    selectDay6.setDate(selectDay6.getDate() + 3);
-  
-    const days = [selectDay1, selectDay2, selectDay3, selectedDay, selectDay4, selectDay5, selectDay6];
-    setDays(days)
-  }
    
   const clickBack = () => {
     navigation.push('InitialPage');
   };
 
-  const isClickOnDumbbell = () => {
-    setDumbbell(true);
-    setTreadmill(false);
-    setRope(false);
-  };
-
-  const isClickOnTreadmill = () => {
-    setDumbbell(false);
-    setTreadmill(true);
-    setRope(false);
-  };
-
-  const isClickOnRope = () => {
-    setDumbbell(false);
-    setTreadmill(false);
-    setRope(true);
-  };
+  
 
   const isClickOnDate = () => {
     setIsClickedDate(true);
@@ -161,8 +109,28 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
           </TouchableOpacity>
         </View>
       </View>
-        <View style={styles.botaoTeste}>
-          <ButtonDay onPress={handleDayPress} days={days}/>
+        <View style={styles.dayContainer}>
+          <TouchableOpacity>
+            <Text></Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text></Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text></Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.textCurrenteDateDay}>
+            <Text>{currentDate}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text></Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text></Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text></Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.kcalContainer}>
           <Text style={styles.textKcalMiddle}>{kcal}</Text>
@@ -196,21 +164,21 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
         </View>
         <View style={styles.containerBottom}>
           <BorderSquare
-            isClickOn={isClickOnDumbbell}
+            isClickOn={() => selectEquipment("dumbbell")}
             icon="dumbbell"
             middleText={'Dumbbel'}
             totalCaloriesText={'700'}
             dumbbell={dumbbell}
           />
           <BorderSquare
-            isClickOn={isClickOnTreadmill}
+            isClickOn={() => selectEquipment("treadmill")}
             icon="dumbbell"
-            middleText={'Dumbbel'}
+            middleText={'Treadmill'}
             totalCaloriesText={'250'}
             dumbbell={treadmill}
           />
           <BorderSquare
-            isClickOn={isClickOnRope}
+            isClickOn={() => selectEquipment("rope")}
             icon="dumbbell"
             middleText={'Rope'}
             totalCaloriesText={'350'}
