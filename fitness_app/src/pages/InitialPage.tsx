@@ -110,26 +110,26 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
         </View>
       </View>
         <View style={styles.dayContainer}>
-          <TouchableOpacity>
-            <Text></Text>
+          <TouchableOpacity >
+            <Text style={styles.textDay}>{date1}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text></Text>
+            <Text style={styles.textDay}>{date2}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text></Text>
+            <Text style={styles.textDay}>{date3}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.textCurrenteDateDay}>
-            <Text>{currentDate}</Text>
+            <Text style={styles.textCurrenteDate}>{currentDate}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text></Text>
+            <Text style={styles.textDay}>{date4}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text></Text>
+            <Text style={styles.textDay}>{date5}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text></Text>
+            <Text style={styles.textDay}>{date6}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.kcalContainer}>

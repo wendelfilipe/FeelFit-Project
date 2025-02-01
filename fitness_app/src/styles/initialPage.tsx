@@ -66,6 +66,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 13
     },
+    textCurrenteDate:{
+        fontWeight: 'bold'
+    },
     kcalContainer: {
         margin: 20,
         alignItems: 'center'
