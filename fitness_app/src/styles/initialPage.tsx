@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
     textCurrenteDate:{
         fontWeight: 'bold'
     },
+    scrollContainer: {
+        flex: 1
+    },
     kcalContainer: {
         margin: 20,
         alignItems: 'center'
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     barContainer:{
-        height: 100,
+        flex: 1,
         justifyContent: 'space-between',
         flexDirection: 'row',
         marginBottom: 10

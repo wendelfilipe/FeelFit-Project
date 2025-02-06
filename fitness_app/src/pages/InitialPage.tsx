@@ -11,6 +11,7 @@ import ButtonDay from 'src/components/ButtonSelectedDay';
 import ButtonCurrentDay from 'src/components/ButtonSelectedDay';
 import ButtonSelectedDay from 'src/components/ButtonSelectedDay';
 import useEquipmentSelection from 'src/hook/useEquipmentSelection';
+import useOnClickDate from 'src/hook/useOnClickDate';
 
 type InitialPageProps = NativeStackScreenProps<RootStackParamList, 'FitnessApp'>;
 
@@ -38,6 +39,15 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   
   //hook
   const [dumbbell, treadmill, rope, selectEquipment] = useEquipmentSelection();
+  const [
+    onClickCurrentDate, 
+    onClickDate1,
+    onClickDate2, 
+    onClickDate3, 
+    onClickDate4,
+    onClickDate5,
+    onClickDate6
+  ]= useOnClickDate()
 
   useEffect(() => {
     
@@ -119,7 +129,9 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
           <TouchableOpacity>
             <Text style={styles.textDay}>{date3}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.textCurrenteDateDay}>
+          <TouchableOpacity 
+            onPress={onClickCurrentDate}
+            style={styles.textCurrenteDateDay}>
             <Text style={styles.textCurrenteDate}>{currentDate}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -132,11 +144,11 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
             <Text style={styles.textDay}>{date6}</Text>
           </TouchableOpacity>
         </View>
+      <ScrollView style={styles.scrollContainer}>
         <View style={styles.kcalContainer}>
           <Text style={styles.textKcalMiddle}>{kcal}</Text>
           <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
         </View>
-      <ScrollView>
         <View style={styles.dataContainer}>
           <View style={styles.distanceContainer}>
             <Text style={styles.distanceNumber}>7580 m</Text>
