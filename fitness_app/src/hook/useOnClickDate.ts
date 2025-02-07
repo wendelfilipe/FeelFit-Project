@@ -86,8 +86,15 @@ const useOnClickDate = () => {
         isClickDate3,
         isClickDate4,
         isClickDate5,
-        isClickDate6
-    ]
+        isClickDate6,
+        onClickCurrentDate,
+        onClickDate1,
+        onClickDate2,
+        onClickDate3,
+        onClickDate4,
+        onClickDate5,
+        onClickDate6
+    ] as const
 }
 
 export default useOnClickDate;

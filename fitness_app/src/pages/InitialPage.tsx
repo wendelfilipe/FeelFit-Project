@@ -40,13 +40,20 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   //hook
   const [dumbbell, treadmill, rope, selectEquipment] = useEquipmentSelection();
   const [
+    isClickCurrentDate,
+    isClickDate1,
+    isClickDate2,
+    isClickDate3,
+    isClickDate4,
+    isClickDate5,
+    isClickDate6,
     onClickCurrentDate, 
     onClickDate1,
     onClickDate2, 
     onClickDate3, 
     onClickDate4,
     onClickDate5,
-    onClickDate6
+    onClickDate6,
   ]= useOnClickDate()
 
   useEffect(() => {
@@ -120,29 +127,34 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
         </View>
       </View>
         <View style={styles.dayContainer}>
-          <TouchableOpacity >
-            <Text style={styles.textDay}>{date1}</Text>
+          <TouchableOpacity 
+            onPress={onClickDate1}
+            style={isClickDate1 ? styles.textCurrenteDateDay : styles.textDay}
+          >
+            <Text style={isClickDate1 ? styles.textCurrenteDateDay : styles.textDay}>{date1}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date2}</Text>
+          <TouchableOpacity 
+            onPress={onClickDate2}
+            style={isClickDate2 ? styles.textCurrenteDateDay : styles.textDay}
+          >
+            <Text style={isClickDate2 ? styles.textCurrenteDateDay : styles.textDay}>{date2}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date3}</Text>
+          <TouchableOpacity 
+            onPress={onClickDate3}
+            style={isClickDate3 ? styles.textCurrenteDateDay : styles.textDay}
+          >
+            <Text style={isClickDate3 ? styles.textCurrenteDateDay : styles.textDay}>{date3}</Text>
           </TouchableOpacity>
           <TouchableOpacity 
             onPress={onClickCurrentDate}
-            style={styles.textCurrenteDateDay}>
-            <Text style={styles.textCurrenteDate}>{currentDate}</Text>
+            style={isClickCurrentDate ? styles.textCurrenteDateDay : styles.textDay}
+          >
+            <Text style={isClickCurrentDate ? styles.textCurrenteDateDay : styles.textDay}>{currentDate}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date4}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date5}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.textDay}>{date6}</Text>
-          </TouchableOpacity>
+          <Text style={isClickDate4 ? styles.textCurrenteDateDay : styles.textDay}>{date4}</Text>
+          <Text style={isClickDate5 ? styles.textCurrenteDateDay : styles.textDay}>{date5}</Text>
+          <Text style={styles.textDay}>{date6}</Text>
+          
         </View>
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.kcalContainer}>

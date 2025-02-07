@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     textDay: {
-        margin: 7
+        margin: 5
     },
     textCurrenteDateDay:{
         backgroundColor: '#ff6961',
