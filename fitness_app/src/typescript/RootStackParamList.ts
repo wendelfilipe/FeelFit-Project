@@ -8,4 +8,5 @@ export type RootStackParamList = {
     InitialPage: undefined
     HeartRate: undefined
     ActivityProfile: undefined
+    DataKcal: undefined
 }

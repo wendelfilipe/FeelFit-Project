@@ -6,7 +6,7 @@ import form from "../styles/form/form";
 const Login: React.FC<Props> = ({ navigation }) => {
 
     function clickLogin(){
-        navigation.navigate('DrawerRoutes')
+        navigation.navigate('DataKcal')
     }
 
     return(

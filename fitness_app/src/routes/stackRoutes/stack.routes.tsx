@@ -4,6 +4,7 @@ import Login from '../../pages/Login';
 import { RootStackParamList } from '../../typescript/RootStackParamList';
 import DrawerRoutes from '../drawerRoutes/drawer.routes';
 import { Platform } from 'react-native';
+import DataKcal from 'src/pages/DataKcal';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -23,6 +24,16 @@ const StackRoutes: React.FC = () => {
             title: 'Fitness App',
           }}
         />
+        <Stack.Screen
+          name='DataKcal'
+          component={DataKcal}
+          options={{
+            headerTitleAlign: 'center',
+            title: 'Calorias gastas'
+          }}
+        >
+
+        </Stack.Screen>
         <Stack.Screen
             name='DrawerRoutes'
             component={DrawerRoutes}

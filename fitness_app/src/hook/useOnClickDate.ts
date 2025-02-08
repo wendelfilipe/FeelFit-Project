@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useOnClickDate = () => {
-    const [isClickCurrentDate, setIsClickCurrentDate] = useState<boolean>(false);
+    const [isClickCurrentDate, setIsClickCurrentDate] = useState<boolean>(true);
     const [isClickDate1, setIsClickDate1] = useState<boolean>(false);
     const [isClickDate2, setIsClickDate2] = useState<boolean>(false);
     const [isClickDate3, setIsClickDate3] = useState<boolean>(false);
