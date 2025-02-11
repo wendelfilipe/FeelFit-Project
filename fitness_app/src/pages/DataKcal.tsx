@@ -12,23 +12,29 @@ const DataKcal: React.FC<Props> = ({ navigation }) => {
     }
     return (
         <View style={styles.containerAll}>
-            <View>
-                <Text>Calorias Gasta </Text>
-                <TextInput 
-                    onChangeText={(text) => setKcal(parseInt(text, 10))}
-                    keyboardType="numeric">
-                </TextInput>
-                <Text>Data</Text>
-                <TextInput 
-                    onChangeText={(text) => setKcal(parseInt(text, 10))}
-                    keyboardType="numeric">
-                </TextInput>
+            <View style={styles.form}>
+                <View style={styles.formRow}>
+                    <View style={styles.kcalContainer}>
+                        <Text style={styles.text}>Kcal Gasta </Text>
+                        <TextInput style={styles.textInput}
+                            onChangeText={(text) => setKcal(parseInt(text, 10))}
+                            keyboardType="numeric">
+                        </TextInput>
+                    </View>
+                    <View style={styles.dateContainer}>
+                        <Text style={styles.text}>Data</Text>
+                        <TextInput style={styles.textInput}
+                            onChangeText={(text) => setKcal(parseInt(text, 10))}
+                            keyboardType="default">
+                        </TextInput>
+                    </View>
+                </View>
+                <TouchableOpacity style={styles.button}
+                    onPress={onClick}
+                >
+                    <Text style={styles.textButton}>Next</Text>
+                </TouchableOpacity>
             </View>
-            <TouchableOpacity
-                onPress={onClick}
-            >
-                <Text>Next</Text>
-            </TouchableOpacity>
         </View>
     )
 }
