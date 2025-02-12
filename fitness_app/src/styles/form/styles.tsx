@@ -33,7 +33,15 @@ const styles = StyleSheet.create({
 
     },
     dateContainer: {
-
+        flexDirection: 'row',
+        marginLeft: 10,
+        marginTop: 25,
+        marginBottom: 25,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    icon: {
+        marginRight: 5
     },
     button:{
         marginTop: 5,

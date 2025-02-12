@@ -1,11 +1,23 @@
+import { FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, Platform, Text, TextInput, TouchableOpacity, View } from "react-native";
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 
 import styles from "src/styles/form/styles";
 import { Props } from "src/typescript/LoginScreenNavigationProp";
 
 const DataKcal: React.FC<Props> = ({ navigation }) => {
     const [Kcal, setKcal] = useState<number | undefined>()
+    const [date, setDate] = useState<Date>(new Date());
+    const [open, setOpen] = useState<boolean>(false);
+
+    const onChange = (event: any, selectedDate: Date | undefined) => {
+        const currentDate = selectedDate || date;
+        setOpen(Platform.OS === 'ios' ? true : false); // Fechar o picker após seleção no Android
+        setDate(currentDate);
+      };
+   
 
     const onClick = () => {
         navigation.navigate('DrawerRoutes')
@@ -22,10 +34,26 @@ const DataKcal: React.FC<Props> = ({ navigation }) => {
                         </TextInput>
                     </View>
                     <View style={styles.dateContainer}>
-                        <Text style={styles.text}>Data</Text>
+                        <TouchableOpacity onPress={() => {
+                                alert("Opening DatePicker");
+                                setOpen(true);
+                            }}>
+                            <FontAwesome name="calendar" size={24} color='#ff3b1f' style={styles.icon}></FontAwesome>
+                        </TouchableOpacity>
+                        {open && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={date}
+                                mode="date"
+                                is24Hour={true}
+                                display="default"
+                                onChange={onChange}
+                            />
+                        )}
                         <TextInput style={styles.textInput}
                             onChangeText={(text) => setKcal(parseInt(text, 10))}
-                            keyboardType="default">
+                            editable={false}
+                        >
                         </TextInput>
                     </View>
                 </View>
