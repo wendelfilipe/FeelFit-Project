@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
     },
     textInput: {
         marginTop:5,
-        padding: 3,
+        padding: 5,
+        textAlign: 'center',
+        fontWeight: 'bold',
         borderWidth: 2,
         borderColor: '#ff3b1f',
         borderRadius: 15,
