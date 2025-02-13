@@ -31,11 +31,10 @@ const DataKcal: React.FC<Props> = ({ navigation }) => {
 
     const onClick = async () => {
         if(Kcal !== undefined ) {
-            await AsyncStorage.setItem('Kcal', Kcal.toString())
+            await AsyncStorage.setItem('Kcal', Kcal.toString());
         }
-        const test = await AsyncStorage.getItem('Kcal');
-        alert(test)
-        //navigation.navigate('DrawerRoutes')
+        
+        navigation.navigate('DrawerRoutes')
     }
     return (
         <View style={styles.containerAll}>

@@ -12,6 +12,7 @@ import ButtonCurrentDay from 'src/components/ButtonSelectedDay';
 import ButtonSelectedDay from 'src/components/ButtonSelectedDay';
 import useEquipmentSelection from 'src/hook/useEquipmentSelection';
 import useOnClickDate from 'src/hook/useOnClickDate';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type InitialPageProps = NativeStackScreenProps<RootStackParamList, 'FitnessApp'>;
 
@@ -25,14 +26,14 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   const [date4, setDate4] = useState<string | null>(null);
   const [date5, setDate5] = useState<string | null>(null);
   const [date6, setDate6] = useState<string | null>(null);
-  const [kcal, setKcal] = useState<string | null>('1 883 Kcal');
-  const [valueMon, setValueMon] = useState<number>(2500);
-  const [valueTues, setValueTues] = useState<number>(1500);
-  const [valueWend, setValueWend] = useState<number>(1800);
-  const [valueThurs, setValueThurs] = useState<number>(1000);
-  const [valueFri, setValueFri] = useState<number>(1883);
-  const [valueSatur, setValueSatur] = useState<number>(3000);
-  const [valueSun, setValueSun] = useState<number>(1500);
+  const [kcal, setKcal] = useState<string | null>(null);
+  const [valueDate1, setValueDate1] = useState<number>(0);
+  const [valueDate2, setValueDate2] = useState<number>(0);
+  const [valueDate3, setValueDate3] = useState<number>(0);
+  const [valueCurrentDay, setValueCurrentDay] = useState<number>(0);
+  const [valueDate4, setValueDate4] = useState<number>(0);
+  const [valueDate5, setValueDate5] = useState<number>(0);
+  const [valueDate6, setValueDate6] = useState<number>(0);
   const [total, setTotal] = useState<number>(3500);
   
   const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
@@ -57,7 +58,17 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
   ]= useOnClickDate()
 
   useEffect(() => {
-    
+
+    const getStorage = async () => {
+      const storage = await AsyncStorage.getItem('Kcal');
+      setKcal(storage);
+
+      if(storage !== null)
+        setValueCurrentDay(parseFloat(storage));
+    }
+
+    getStorage();
+  
     const currentDate = new Date();
     const formatedCurrentDate = 'Today, ' + format(currentDate, 'dd MMM');
 
@@ -105,13 +116,13 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     setIsClickedDate(true);
   };
 
-  const percentageMon = Math.min((valueMon / total) * 100, 100);
-  const percentageTues = Math.min((valueTues / total) * 100, 100);
-  const percentageWend = Math.min((valueWend / total) * 100, 100);
-  const percentageThurs = Math.min((valueThurs / total) * 100, 100);
-  const percentageFri = Math.min((valueFri / total) * 100, 100);
-  const percentageSatur = Math.min((valueSatur / total) * 100, 100);
-  const percentageSun = Math.min((valueSun / total) * 100, 100);
+  const percentageDate1 = Math.min((valueDate1 / total) * 100, 100);
+  const percentageDate2 = Math.min((valueDate2 / total) * 100, 100);
+  const percentageDate3 = Math.min((valueDate3 / total) * 100, 100);
+  const percentageCurrentDate = Math.min((valueCurrentDay / total) * 100, 100);
+  const percentageDate4 = Math.min((valueDate4 / total) * 100, 100);
+  const percentageDate5 = Math.min((valueDate5 / total) * 100, 100);
+  const percentageDate6 = Math.min((valueDate6 / total) * 100, 100);
 
   return (
     <View style={styles.containerAll}>
@@ -120,7 +131,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
           <Text style={styles.textCardCurrentDate}>
             {currentDate || 'Loading date...'}
           </Text>
-          <Text style={styles.textKcal}>{kcal}</Text>
+          <Text style={styles.textKcal}>{kcal} Kcal</Text>
           <TouchableOpacity style={styles.buttonCard}>
             <Text style={styles.buttonCardText}>Track your activity</Text>
           </TouchableOpacity>
@@ -158,7 +169,7 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
         </View>
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.kcalContainer}>
-          <Text style={styles.textKcalMiddle}>{kcal}</Text>
+          <Text style={styles.textKcalMiddle}>{kcal} Kcal</Text>
           <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
         </View>
         <View style={styles.dataContainer}>
@@ -177,13 +188,13 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
         </View>
         <View style={styles.barContainer}>
           <BarHorizontal
-            percentageMon={percentageMon}
-            percentageTues={percentageTues}
-            percentageWend={percentageWend}
-            percentageThurs={percentageThurs}
-            percentageFri={percentageFri}
-            percentageSatur={percentageSatur}
-            percentageSun={percentageSun}
+            percentageDate1={percentageDate1}
+            percentageDate2={percentageDate2}
+            percentageDate3={percentageDate3}
+            percentageCurrentDate={percentageCurrentDate}
+            percentageDate4={percentageDate4}
+            percentageDate5={percentageDate5}
+            percentageDate6={percentageDate6}
           />
         </View>
         <View style={styles.containerBottom}>
