@@ -63,7 +63,8 @@ const TabRoutes: React.FC = () => {
             options={{
                 tabBarIcon: ({color, size}) => <Feather name='user' color={color} size={size} />,
                 tabBarLabel: 'Profile',
-                headerShown: false
+                headerShown: false,
+                tabBarButton: () => null
             }}
         />
     </Tab.Navigator>
