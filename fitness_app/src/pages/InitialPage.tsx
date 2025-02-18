@@ -13,6 +13,7 @@ import ButtonSelectedDay from 'src/components/ButtonSelectedDay';
 import useEquipmentSelection from 'src/hook/useEquipmentSelection';
 import useOnClickDate from 'src/hook/useOnClickDate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import useBlur from 'src/hook/useBlur';
 
 type InitialPageProps = NativeStackScreenProps<RootStackParamList, 'FitnessApp'>;
 
@@ -56,8 +57,18 @@ const InitialPage = ({ navigation }: InitialPageProps) => {
     onClickDate5,
     onClickDate6,
   ]= useOnClickDate()
+  const [
+    isBlurHeart,
+    isBluirMaps,
+    isBlurHome,
+    handleBluirHeart,
+    handleBluirMaps,
+    handleBluirHome
+  ] = useBlur();
 
   useEffect(() => {
+
+    handleBluirHome();
 
     const getStorage = async () => {
       const storage = await AsyncStorage.getItem('Kcal');
