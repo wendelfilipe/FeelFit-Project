@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import styles from "src/styles/initialPage";
+import styles from "src/styles/initialHome";
 
 interface BarHorizontalProps {
     percentageDate1: number;

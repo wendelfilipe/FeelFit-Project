@@ -34,7 +34,7 @@ const DataKcal: React.FC<Props> = ({ navigation }) => {
             await AsyncStorage.setItem('Kcal', Kcal.toString());
         }
         
-        navigation.navigate('DrawerRoutes')
+        navigation.navigate('InitialHome')
     }
     return (
         <View style={styles.containerAll}>

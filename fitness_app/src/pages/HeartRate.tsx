@@ -22,7 +22,7 @@ const [
   useEffect(() => {
     handleBluirHeart()
 
-    if (!isBlurHeart) {
+    if (!showCircle) {
       const pulse = () => {
         Animated.sequence([
           Animated.timing(scaleAnim, {
@@ -55,7 +55,7 @@ const [
       
       return () => clearTimeout(timeout);
     }
-  }, [isBlurHeart]);
+  }, [scaleAnim]);
 
   return (
     <View style={styles.container}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/initialPage';
+import styles from '../styles/initialHome';
 import { TouchableOpacity, Text } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 

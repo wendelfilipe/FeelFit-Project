@@ -1,23 +1,26 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
-import Login from '../../pages/Login';
+import Login from '../../pages/InitialPage';
 import { RootStackParamList } from '../../typescript/RootStackParamList';
 import DrawerRoutes from '../drawerRoutes/drawer.routes';
 import { Platform } from 'react-native';
 import DataKcal from 'src/pages/DataKcal';
+import InitialPage from 'src/pages/InitialPage';
+import InitialHome from 'src/pages/InitialHome';
+import HorizontalPager from 'src/pages/PagerView';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackRoutes: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName='Login'
+    <Stack.Navigator initialRouteName='InitialPage'
       screenOptions={{
         headerShadowVisible: false,
       }}
     >
         <Stack.Screen
           name='InitialPage'
-          component={Login}
+          component={InitialPage}
           options={{
             headerShown: false,
             headerTitleAlign: 'center',
@@ -31,9 +34,22 @@ const StackRoutes: React.FC = () => {
             headerTitleAlign: 'center',
             title: 'Calorias gastas'
           }}
-        >
-
-        </Stack.Screen>
+        />
+        <Stack.Screen
+          name='PagerView'
+          component={HorizontalPager}
+          options={{
+            headerTitleAlign: 'center',
+            title: 'Home'
+          }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name='InitialHome'
+          component={InitialHome}
+          options= {{
+            headerShown: false
+          }}
+        />
         <Stack.Screen
             name='DrawerRoutes'
             component={DrawerRoutes}

@@ -9,4 +9,7 @@ export type RootStackParamList = {
     HeartRate: undefined
     ActivityProfile: undefined
     DataKcal: undefined
+    InitialHome: undefined
+    Home: undefined
+    PagerView: undefined
 }
