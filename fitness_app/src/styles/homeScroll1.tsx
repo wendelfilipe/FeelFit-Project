@@ -4,73 +4,16 @@ const styles = StyleSheet.create({
     containerAll:{
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center'
     },
-    containerCard:{
-        width: 320,
-        height: 150,
-        backgroundColor: '#ff6961',
-        borderRadius: 15,
-        marginBottom: 0,
-        marginTop: 50,
-        margin: 'auto',
-        elevation: 25,
-        shadowColor: '#ff0000',
-        padding: 10,
-        justifyContent: 'center'
-    },
-    containerText:{
-        marginLeft: 15
-    },
-    textDate: {
-        fontSize: 12,
-        color: 'white',
-        marginBottom: -5
-    },
-    textKcal: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginBottom: 5,
-        color: 'white'
-    },
-    buttonCard: {
-        padding: 5,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        width: 100,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    textCardCurrentDate: {
-        color: 'white',        
-    },
-    buttonCardText: {
-        fontSize: 10,
-        fontWeight: 'bold',
-        color: '#ff6961'
-    },
-    dayContainer:{
+    containerUser: {
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 5
-    },
-    textDay: {
-        margin: 5
-    },
-    textCurrenteDateDay:{
-        backgroundColor: '#ff6961',
-        padding: 6,
-        borderRadius: 15,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 13
-    },
-    textCurrenteDate:{
-        fontWeight: 'bold'
+        justifyContent: 'space-between',
+        backgroundColor: '#f0f0f0'
     },
     scrollContainer: {
-        flex: 1
+        flex: 1,
+        marginLeft: 25,
+        marginRight: 25
     },
     kcalContainer: {
         margin: 20,
@@ -130,7 +73,15 @@ const styles = StyleSheet.create({
     containerBottom: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        margin: 10
+        marginTop: 10
+    },
+    containerDumbbell: {
+        width: 80,
+        height: 70,
+        backgroundColor: '#ff6961',
+        justifyContent: 'center',
+        padding: 10,
+        borderRadius: 15
     },
     containerTreadmill: {
         width: 80,

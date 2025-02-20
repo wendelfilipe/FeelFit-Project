@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, ScrollView } from 'react-native';
-import styles from '../styles/initialHome';
+import styles from 'src/styles/homeScroll1';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../typescript/RootStackParamList';
 import { format } from 'date-fns';
@@ -16,11 +16,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import useBlur from 'src/hook/useBlur';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-type InitialHomeProps = NativeStackScreenProps<RootStackParamList, 'InitialHome' | 'PagerView'>;
+type HomeScroll1Props = NativeStackScreenProps<RootStackParamList, 'InitialHome' | 'PagerView'>;
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
-const InitialHome = ({ navigation }: InitialHomeProps) => {
+const HomeScroll1 = () => {
   const [currentDate, setCurrentDate] = useState<string | null>(null);
   const [date1, setDate1] = useState<string | null>(null);
   const [date2, setDate2] = useState<string | null>(null);
@@ -117,21 +117,8 @@ const InitialHome = ({ navigation }: InitialHomeProps) => {
     setDate6(formatedDate6);
     
   }, []);
-   
-  const clickBack = () => {
-    navigation.push('InitialHome');
-  };
+ 
 
-  
-
-  const onClickTrack = () => {
-    if(isClicked)
-      navigation.navigate('TabRoutes') 
-    else
-      navigation.navigate('DrawerRoutes')
-
-    setIsClicked(true)
-  };
 
   const percentageDate1 = Math.min((valueDate1 / total) * 100, 100);
   const percentageDate2 = Math.min((valueDate2 / total) * 100, 100);
@@ -142,109 +129,79 @@ const InitialHome = ({ navigation }: InitialHomeProps) => {
   const percentageDate6 = Math.min((valueDate6 / total) * 100, 100);
 
   return (
-    <SafeAreaView style={{ flex: 1}}>
       <View style={styles.containerAll}>
-      <View style={styles.containerCard}>
-        <View style={styles.containerText}>
-          <Text style={styles.textCardCurrentDate}>
-            {currentDate || 'Loading date...'}
-          </Text>
-          <Text style={styles.textKcal}>{kcal} Kcal</Text>
-          <TouchableOpacity 
-            style={styles.buttonCard}
-            onPress={onClickTrack}
-          >
-            <Text style={styles.buttonCardText}>Track your activity</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-        <View style={styles.dayContainer}>
-          <TouchableOpacity 
-            onPress={onClickDate1}
-            style={isClickDate1 ? styles.textCurrenteDateDay : styles.textDay}
-          >
-            <Text style={isClickDate1 ? styles.textCurrenteDateDay : styles.textDay}>{date1}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            onPress={onClickDate2}
-            style={isClickDate2 ? styles.textCurrenteDateDay : styles.textDay}
-          >
-            <Text style={isClickDate2 ? styles.textCurrenteDateDay : styles.textDay}>{date2}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            onPress={onClickDate3}
-            style={isClickDate3 ? styles.textCurrenteDateDay : styles.textDay}
-          >
-            <Text style={isClickDate3 ? styles.textCurrenteDateDay : styles.textDay}>{date3}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            onPress={onClickCurrentDate}
-            style={isClickCurrentDate ? styles.textCurrenteDateDay : styles.textDay}
-          >
-            <Text style={isClickCurrentDate ? styles.textCurrenteDateDay : styles.textDay}>{currentDate}</Text>
-          </TouchableOpacity>
-          <Text style={isClickDate4 ? styles.textCurrenteDateDay : styles.textDay}>{date4}</Text>
-          <Text style={isClickDate5 ? styles.textCurrenteDateDay : styles.textDay}>{date5}</Text>
-          <Text style={styles.textDay}>{date6}</Text>
-          
-        </View>
-      <ScrollView style={styles.scrollContainer}>
-        <View style={styles.kcalContainer}>
-          <Text style={styles.textKcalMiddle}>{kcal} Kcal</Text>
-          <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
-        </View>
-        <View style={styles.dataContainer}>
-          <View style={styles.distanceContainer}>
-            <Text style={styles.distanceNumber}>7580 m</Text>
-            <Text style={styles.distanceText}>Distance</Text>
+        <View style={styles.containerUser}>
+          <View style={styles.containerUserRow}>
+            <Text>Row</Text>
           </View>
-          <View style={styles.stepsContainer}>
-            <Text style={styles.distanceNumber}>9832</Text>
-            <Text style={styles.distanceText}>Steps</Text>
+          <View style={styles.containerUserRow}>
+            <View style={styles.containerUserColun}>
+              <Text> Coluna</Text>
+            </View>
+            <View style={styles.containerUserColun}>
+              <Text> Coluna</Text>
+            </View>
           </View>
-          <View style={styles.pointContainer}>
-            <Text style={styles.distanceNumber}>1248</Text>
-            <Text style={styles.distanceText}>Points</Text>
+          <View style={styles.containerUserRow}>
+            <Text>Row</Text>
           </View>
         </View>
-        <View style={styles.barContainer}>
-          <BarHorizontal
-            percentageDate1={percentageDate1}
-            percentageDate2={percentageDate2}
-            percentageDate3={percentageDate3}
-            percentageCurrentDate={percentageCurrentDate}
-            percentageDate4={percentageDate4}
-            percentageDate5={percentageDate5}
-            percentageDate6={percentageDate6}
-          />
+        <View style={styles.scrollContainer}>
+          <View style={styles.kcalContainer}>
+            <Text style={styles.textKcalMiddle}>{kcal} Kcal</Text>
+            <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
+          </View>
+          <View style={styles.dataContainer}>
+            <View style={styles.distanceContainer}>
+              <Text style={styles.distanceNumber}>7580 m</Text>
+              <Text style={styles.distanceText}>Distance</Text>
+            </View>
+            <View style={styles.stepsContainer}>
+              <Text style={styles.distanceNumber}>9832</Text>
+              <Text style={styles.distanceText}>Steps</Text>
+            </View>
+            <View style={styles.pointContainer}>
+              <Text style={styles.distanceNumber}>1248</Text>
+              <Text style={styles.distanceText}>Points</Text>
+            </View>
+          </View>
+          <View style={styles.barContainer}>
+            <BarHorizontal
+              percentageDate1={percentageDate1}
+              percentageDate2={percentageDate2}
+              percentageDate3={percentageDate3}
+              percentageCurrentDate={percentageCurrentDate}
+              percentageDate4={percentageDate4}
+              percentageDate5={percentageDate5}
+              percentageDate6={percentageDate6}
+            />
+          </View>
+          <View style={styles.containerBottom}>
+            <BorderSquare
+              isClickOn={() => selectEquipment("dumbbell")}
+              icon="dumbbell"
+              middleText={'Dumbbel'}
+              totalCaloriesText={'700'}
+              dumbbell={dumbbell}
+            />
+            <BorderSquare
+              isClickOn={() => selectEquipment("treadmill")}
+              icon="dumbbell"
+              middleText={'Treadmill'}
+              totalCaloriesText={'250'}
+              dumbbell={treadmill}
+            />
+            <BorderSquare
+              isClickOn={() => selectEquipment("rope")}
+              icon="dumbbell"
+              middleText={'Rope'}
+              totalCaloriesText={'350'}
+              dumbbell={rope}
+            />
+          </View>
         </View>
-        <View style={styles.containerBottom}>
-          <BorderSquare
-            isClickOn={() => selectEquipment("dumbbell")}
-            icon="dumbbell"
-            middleText={'Dumbbel'}
-            totalCaloriesText={'700'}
-            dumbbell={dumbbell}
-          />
-          <BorderSquare
-            isClickOn={() => selectEquipment("treadmill")}
-            icon="dumbbell"
-            middleText={'Treadmill'}
-            totalCaloriesText={'250'}
-            dumbbell={treadmill}
-          />
-          <BorderSquare
-            isClickOn={() => selectEquipment("rope")}
-            icon="dumbbell"
-            middleText={'Rope'}
-            totalCaloriesText={'350'}
-            dumbbell={rope}
-          />
-        </View>
-      </ScrollView>
     </View>
-    </SafeAreaView>
   );
 };
 
-export default InitialHome;
+export default HomeScroll1;

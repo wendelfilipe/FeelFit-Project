@@ -5,6 +5,7 @@ import InitialHome from './InitialHome';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from 'src/typescript/RootStackParamList';
 import { RouteProp } from '@react-navigation/native';
+import HomeScroll1 from './HomeScroll1';
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'PagerView'>
 
@@ -43,7 +44,8 @@ const PagerViewHome: React.FC<Props> = ({ navigation, route }) => {
         {/* PagerView para rolagem horizontal */}
         <PagerView style={styles.pagerView} initialPage={0} onPageSelected={handlePageChange}>
           <View style={styles.page}>
-            <Text style={styles.text}>Page 1</Text>
+            <HomeScroll1
+            />
           </View>
           <View style={styles.page}>
             <Text style={styles.text}>Page 2</Text>
@@ -69,13 +71,13 @@ const PagerViewHome: React.FC<Props> = ({ navigation, route }) => {
       backgroundColor: '#FFF',
     },
     page: {
-      justifyContent: 'center',
-      alignItems: 'center',
       flex: 1,
+      justifyContent: 'center',
       backgroundColor: '#f0f0f0',
     },
     text: {
       fontSize: 24,
+      textAlign: 'center'
     },
     pagination: {
       flexDirection: 'row',
