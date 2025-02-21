@@ -8,13 +8,41 @@ const styles = StyleSheet.create({
     containerUser: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#f0f0f0'
+        backgroundColor: '#fff'
     },
     containerUserImg:{
+        backgroundColor: "#f0f0f0",
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        marginLeft: 15
 
     },
-    containerUserName:{
-
+    containerUserName: {
+        flex: 1,
+        justifyContent:'center',
+        alignItems: 'flex-start',
+    },
+    textUserWelcome:{
+        marginLeft: 10,
+        fontSize: 15
+    },
+    textUserDay: {
+        marginLeft: 10,
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    containerUserCalendar: {
+        backgroundColor: "#f0f0f0",
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        marginRight: 15, 
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    iconCalendar:{
+        fontSize: 50
     },
     scrollContainer: {
         flex: 1,

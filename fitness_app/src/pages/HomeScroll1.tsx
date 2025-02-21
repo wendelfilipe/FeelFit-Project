@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, ScrollView, Image } from 'react-native';
 import styles from 'src/styles/homeScroll1';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../typescript/RootStackParamList';
 import { format } from 'date-fns';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import BorderSquare from 'src/components/BorderSquare';
 import BarHorizontal from 'src/components/BarHorizontal';
 import ButtonDay from 'src/components/ButtonSelectedDay';
@@ -82,7 +82,7 @@ const HomeScroll1 = () => {
     getStorage();
   
     const currentDate = new Date();
-    const formatedCurrentDate = 'Today, ' + format(currentDate, 'dd MMM');
+    const formatedCurrentDate = format(currentDate, 'EEEE, dd MMM');
 
     const previousDate1 = new Date(currentDate);
     previousDate1.setDate(currentDate.getDate() - 3);
@@ -132,16 +132,18 @@ const HomeScroll1 = () => {
       <View style={styles.containerAll}>
         <View style={styles.containerUser}>
           <View style={styles.containerUserImg}>
-            <Text>Row</Text>
+            <Image
+              
+            />
           </View>
           <View style={styles.containerUserName}>
             
-              <Text style={styles.textUserName}> Coluna</Text>
-              <Text> Coluna</Text>
+              <Text style={styles.textUserWelcome}> Hello, Linh!</Text>
+              <Text style={styles.textUserDay}> {currentDate}</Text>
             
           </View>
-          <View style={styles.containerUserRow}>
-            <Text>Row</Text>
+          <View style={styles.containerUserCalendar}>
+            <Feather style={styles.iconCalendar} name='calendar'/>
           </View>
         </View>
         <View style={styles.scrollContainer}>
