@@ -10,6 +10,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: '#f0f0f0'
     },
+    containerUserImg:{
+
+    },
+    containerUserName:{
+
+    },
     scrollContainer: {
         flex: 1,
         marginLeft: 25,

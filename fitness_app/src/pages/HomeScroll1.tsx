@@ -131,16 +131,14 @@ const HomeScroll1 = () => {
   return (
       <View style={styles.containerAll}>
         <View style={styles.containerUser}>
-          <View style={styles.containerUserRow}>
+          <View style={styles.containerUserImg}>
             <Text>Row</Text>
           </View>
-          <View style={styles.containerUserRow}>
-            <View style={styles.containerUserColun}>
+          <View style={styles.containerUserName}>
+            
+              <Text style={styles.textUserName}> Coluna</Text>
               <Text> Coluna</Text>
-            </View>
-            <View style={styles.containerUserColun}>
-              <Text> Coluna</Text>
-            </View>
+            
           </View>
           <View style={styles.containerUserRow}>
             <Text>Row</Text>

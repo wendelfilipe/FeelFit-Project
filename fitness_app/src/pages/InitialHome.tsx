@@ -183,9 +183,9 @@ const InitialHome = ({ navigation }: InitialHomeProps) => {
           >
             <Text style={isClickCurrentDate ? styles.textCurrenteDateDay : styles.textDay}>{currentDate}</Text>
           </TouchableOpacity>
-          <Text style={isClickDate4 ? styles.textCurrenteDateDay : styles.textDay}>{date4}</Text>
-          <Text style={isClickDate5 ? styles.textCurrenteDateDay : styles.textDay}>{date5}</Text>
-          <Text style={styles.textDay}>{date6}</Text>
+          <Text style={styles.textDayAfterCurrent}>{date4}</Text>
+          <Text style={ styles.textDayAfterCurrent}>{date5}</Text>
+          <Text style={styles.textDayAfterCurrent}>{date6}</Text>
           
         </View>
       <ScrollView style={styles.scrollContainer}>
@@ -193,19 +193,19 @@ const InitialHome = ({ navigation }: InitialHomeProps) => {
           <Text style={styles.textKcalMiddle}>{kcal} Kcal</Text>
           <Text style={styles.textTotalCalories}>Total Kilocalories</Text>
         </View>
-        <View style={styles.dataContainer}>
-          <View style={styles.distanceContainer}>
-            <Text style={styles.distanceNumber}>7580 m</Text>
-            <Text style={styles.distanceText}>Distance</Text>
-          </View>
-          <View style={styles.stepsContainer}>
-            <Text style={styles.distanceNumber}>9832</Text>
-            <Text style={styles.distanceText}>Steps</Text>
-          </View>
-          <View style={styles.pointContainer}>
-            <Text style={styles.distanceNumber}>1248</Text>
-            <Text style={styles.distanceText}>Points</Text>
-          </View>
+        <View style={styles.containerOfData}>
+            <View style={styles.containerOfDistance}>
+              <Text style={styles.distanceNumber}>7580 m</Text>
+              <Text style={styles.distanceText}>Distance</Text>
+            </View>
+            <View style={styles.containerOfDistance}>
+              <Text style={styles.distanceNumber}>9832</Text>
+              <Text style={styles.distanceText}>Steps</Text>
+            </View>
+            <View style={styles.containerOfDistance}>
+              <Text style={styles.distanceNumber}>1248</Text>
+              <Text style={styles.distanceText}>Points</Text>
+            </View>
         </View>
         <View style={styles.barContainer}>
           <BarHorizontal

@@ -3,8 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     containerAll:{
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center'
+        backgroundColor: '#fff'
     },
     containerCard:{
         width: 320,
@@ -58,6 +57,9 @@ const styles = StyleSheet.create({
     textDay: {
         margin: 5
     },
+    textDayAfterCurrent:{
+        marginLeft: 15
+    },
     textCurrenteDateDay:{
         backgroundColor: '#ff6961',
         padding: 6,
@@ -73,8 +75,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     kcalContainer: {
-        margin: 20,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 20
     },
     textKcalMiddle: {
         marginBottom: 5,
@@ -86,12 +88,19 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         opacity: .8
     },
-    dataContainer: {
+    containerOfData: {
+        flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingRight: 25,
-        paddingLeft: 25,
-        marginBottom: 10
+        marginBottom: 10,
+        justifyContent: 'center'
+    },
+    containerOfDistance:{
+        marginRight: 20,
+    },
+    dataContainer:{
+        backgroundColor: '#f0f0f0',
+        flexDirection: 'row',
+        marginBottom: 10,
     },
     distanceContainer: {
     },
@@ -110,7 +119,9 @@ const styles = StyleSheet.create({
     },
     barContainer:{
         justifyContent: 'space-between',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingRight: 25,
+        paddingLeft: 25
     },
     bar:{
         backgroundColor: '#dcdcdc',
