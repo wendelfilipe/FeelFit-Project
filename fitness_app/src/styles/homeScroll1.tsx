@@ -8,7 +8,12 @@ const styles = StyleSheet.create({
     containerUser: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderRadius: 10,
+        elevation: 15,
+        padding: 5
+
     },
     containerUserImg:{
         backgroundColor: "#f0f0f0",
