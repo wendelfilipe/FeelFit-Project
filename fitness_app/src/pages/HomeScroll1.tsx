@@ -4,7 +4,7 @@ import styles from 'src/styles/homeScroll1';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../typescript/RootStackParamList';
 import { format } from 'date-fns';
-import { Feather, FontAwesome5 } from '@expo/vector-icons';
+import { Feather, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import BorderSquare from 'src/components/BorderSquare';
 import BarHorizontal from 'src/components/BarHorizontal';
 import ButtonDay from 'src/components/ButtonSelectedDay';
@@ -15,6 +15,7 @@ import useOnClickDate from 'src/hook/useOnClickDate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import useBlur from 'src/hook/useBlur';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import CalendarButton from 'src/components/CalendarButton';
 
 type HomeScroll1Props = NativeStackScreenProps<RootStackParamList, 'InitialHome' | 'PagerView'>;
 
@@ -143,7 +144,7 @@ const HomeScroll1 = () => {
             
           </View>
           <View style={styles.containerUserCalendar}>
-            <Feather style={styles.iconCalendar} name='calendar'/>
+            <CalendarButton color='black'/>
           </View>
         </View>
         <View style={styles.scrollContainer}>

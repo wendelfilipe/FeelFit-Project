@@ -9,18 +9,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: '#fff',
-        borderWidth: 1,
-        borderRadius: 10,
-        elevation: 15,
-        padding: 5
-
     },
     containerUserImg:{
-        backgroundColor: "#f0f0f0",
         width: 50,
         height: 50,
         borderRadius: 25,
-        marginLeft: 15
+        marginLeft: 15,
+        borderWidth: 1
 
     },
     containerUserName: {
@@ -38,16 +33,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     containerUserCalendar: {
-        backgroundColor: "#f0f0f0",
         width: 50,
         height: 50,
         borderRadius: 25,
         marginRight: 15, 
         justifyContent: 'center',
-        alignItems: 'center'
-    },
-    iconCalendar:{
-        fontSize: 50
+        alignItems: 'center',
+        borderWidth: 1
     },
     scrollContainer: {
         flex: 1,
