@@ -9,19 +9,10 @@ import { Props } from "src/typescript/LoginScreenNavigationProp";
 import { format } from "date-fns";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import CalendarButton from "src/components/CalendarButton";
-import useCalendarButton from "src/hook/useCalendarButton";
 
 const DataKcal: React.FC<Props> = ({ navigation }) => {
     const [Kcal, setKcal] = useState<number | undefined>()
-
-    //hook
-    const [
-        date,
-        open,
-        setDate,
-        setOpen,
-        onChange
-    ] = useCalendarButton();
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
     useEffect(() => {
         const saveKcal = async () => {
@@ -51,12 +42,13 @@ const DataKcal: React.FC<Props> = ({ navigation }) => {
                         </TextInput>
                     </View>
                     <View style= {styles.dateContainer}>
-                        <CalendarButton 
+                        <CalendarButton
+                            onDateChange={setSelectedDate} 
                             color="black"/>
                     </View>
                     <View style={styles.dateInputContainer}>
                         <TextInput style={styles.textInput}
-                            value={format(date, 'dd/MM/yy')}
+                            value={format(selectedDate, 'dd/MM/yy')}
                         >
                         </TextInput>
                     </View>

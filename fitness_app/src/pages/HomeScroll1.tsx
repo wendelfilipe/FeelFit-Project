@@ -144,7 +144,8 @@ const HomeScroll1 = () => {
             
           </View>
           <View style={styles.containerUserCalendar}>
-            <CalendarButton color='black'/>
+            <CalendarButton 
+              color='black'/>
           </View>
         </View>
         <View style={styles.scrollContainer}>
