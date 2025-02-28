@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from 'src/typescript/RootStackParamList';
 import { RouteProp } from '@react-navigation/native';
 import HomeScroll1 from './HomeScroll1';
+import HomeScrollGraphic from './HomeScrollGraphic';
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'PagerView'>
 
@@ -21,6 +22,9 @@ type Props = {
 const PagerViewHome: React.FC<Props> = ({ navigation, route }) => {
     // Estado para rastrear a página atual
     const [currentPage, setCurrentPage] = useState(0);
+
+    const amountPage: number[] = [0, 1];
+
   
     // Função para lidar com mudanças de página
     const handlePageChange = (event: any) => {
@@ -31,7 +35,7 @@ const PagerViewHome: React.FC<Props> = ({ navigation, route }) => {
       <View style={styles.container}>
         {/* Indicadores de página */}
         <View style={styles.pagination}>
-          {[0, 1, 2, 3].map((pageIndex) => (
+          {[...amountPage].map((pageIndex) => (
             <View
               key={pageIndex}
               style={[
@@ -48,13 +52,7 @@ const PagerViewHome: React.FC<Props> = ({ navigation, route }) => {
             />
           </View>
           <View style={styles.page}>
-            <Text style={styles.text}>Page 2</Text>
-          </View>
-          <View  style={styles.page}>
-            <Text style={styles.text}>Page 3</Text>
-          </View>
-          <View style={styles.page}>
-            <Text style={styles.text}>Page 4</Text>
+            <HomeScrollGraphic/>
           </View>
         </PagerView>
       </View>

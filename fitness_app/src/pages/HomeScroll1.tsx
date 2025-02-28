@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, ScrollView, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import styles from 'src/styles/homeScroll1';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../typescript/RootStackParamList';
 import { format } from 'date-fns';
-import { Feather, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import BorderSquare from 'src/components/BorderSquare';
 import BarHorizontal from 'src/components/BarHorizontal';
-import ButtonDay from 'src/components/ButtonSelectedDay';
-import ButtonCurrentDay from 'src/components/ButtonSelectedDay';
-import ButtonSelectedDay from 'src/components/ButtonSelectedDay';
 import useEquipmentSelection from 'src/hook/useEquipmentSelection';
 import useOnClickDate from 'src/hook/useOnClickDate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import useBlur from 'src/hook/useBlur';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import CalendarButton from 'src/components/CalendarButton';
-
-type HomeScroll1Props = NativeStackScreenProps<RootStackParamList, 'InitialHome' | 'PagerView'>;
-
-type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 const HomeScroll1 = () => {
   const [currentDate, setCurrentDate] = useState<string | null>(null);
@@ -83,7 +72,7 @@ const HomeScroll1 = () => {
     getStorage();
   
     const currentDate = new Date();
-    const formatedCurrentDate = format(currentDate, 'EEEE, dd MMM');
+    const formatedCurrentDate = format(currentDate, 'EEEE, dd MMMM');
 
     const previousDate1 = new Date(currentDate);
     previousDate1.setDate(currentDate.getDate() - 3);
