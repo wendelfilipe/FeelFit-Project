@@ -40,6 +40,51 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 1
+    },
+    containerInformation: {
+        marginTop: 20,
+        flexDirection: 'row',
+        height: 200
+    },
+    containerColunm: {
+        flexDirection: 'column',
+        flex: 1
+    },
+    containerCalories: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderWidth: 2,
+        borderColor: '#f0f0f0',
+        borderRadius: 20,
+        marginLeft: 15,
+        marginTop: 5,
+        elevation: 1
+    },
+    containerSteps: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderWidth: 2,
+        borderColor: '#f0f0f0',
+        borderRadius: 20,
+        marginLeft: 15,
+        marginTop: 15,
+        elevation: 1
+    },
+    containerHeart: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderWidth: 2,
+        borderColor: '#f0f0f0',
+        borderRadius: 20,
+        marginLeft: 15,
+        marginRight: 15,
+        elevation: 1
     }
 })
 

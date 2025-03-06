@@ -16,20 +16,40 @@ const HomeScrollGraphic = () => {
     
     return (
         <View style={styles.containerAll}>
-            <View style={styles.containerUser}>
-          <View style={styles.containerUserImg}>
-            <Image
-            />
-          </View>
-          <View style={styles.containerUserName}>
+          <View style={styles.containerUser}>
+            <View style={styles.containerUserImg}>
+              <Image
+              />
+            </View>
+            <View style={styles.containerUserName}>
               <Text style={styles.textUserWelcome}> Hello, Linh!</Text>
               <Text style={styles.textUserDay}> {currentDate}</Text>
+            </View>
+            <View style={styles.containerUserCalendar}>
+              <CalendarButton 
+                color='black'/>
+            </View>
           </View>
-          <View style={styles.containerUserCalendar}>
-            <CalendarButton 
-              color='black'/>
+          <View>
+
           </View>
-        </View>
+          <View style={styles.containerInformation}>
+            <View style={styles.containerColunm}>
+              <View style={styles.containerCalories}>
+                <Text> Calories </Text>
+                <Text> 620.68 </Text>
+                <Text> Kcal </Text>
+              </View>
+              <View style={styles.containerSteps}>
+                <Text> Calories </Text>
+                <Text> 620.68 </Text>
+                <Text> Kcal </Text>
+              </View>
+            </View>
+            <View style={styles.containerHeart}>
+              <Text>Heart</Text>
+            </View>
+          </View>
         </View>
     )
 }
