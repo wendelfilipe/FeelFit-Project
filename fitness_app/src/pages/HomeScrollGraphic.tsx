@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Image } from "react-native";
 import CalendarButton from "src/components/CalendarButton";
 import styles from "src/styles/homeScrollGraphic";
+import { CartesianChart, Area } from "victory-native";
+import DATA from "./my-data";
 
 const HomeScrollGraphic = () => {
     const [currentDate, setCurrentDate] = useState<string | null>(null);
@@ -47,7 +49,17 @@ const HomeScrollGraphic = () => {
               </View>
             </View>
             <View style={styles.containerHeart}>
-              <Text>Heart</Text>
+              <CartesianChart data={DATA} xKey="x" yKeys={["y"]}>
+                {({ points, chartBounds }) => (
+                //👇 pass a PointsArray to the Line component, y0, as well as options.
+                <Area
+                    points={points.y}
+                    y0={chartBounds.bottom}
+                    color="red"
+                    animate={{ type: "timing", duration: 300 }}
+                  />
+                )}
+              </CartesianChart>
             </View>
           </View>
         </View>
